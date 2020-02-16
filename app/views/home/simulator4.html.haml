@@ -1,0 +1,244 @@
+= render "header"
+.main3
+  .main2__box__bar
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      引越しの見積もりをシミュレーション！
+  .main2__box__info__bar
+    .main2__box__info__bar__text
+      .main2__box__info__bar__text__first
+        お引越し日と
+        %br
+        ご家族の人数構成
+      .main2__box__info__bar__text__first
+        現在のご住所と
+        %br
+        お引越し先のご住所
+      .main2__box__info__bar__text__first
+        運搬する
+        %br
+        お荷物を選択
+      .main2__box__info__bar__text__forth
+        お見積もり結果
+    .main2__box__info__bar__bottom
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+  = form_for(@baggage, url: home_index_path, method: :post) do |f|
+    .main4-title
+      運搬する荷物を選択
+    .main4-bar
+      ・家具
+    .main4__box__contaner
+      .main4__box__contaner__bed
+        .main4__box__contaner__bed__left
+          ベッド
+        .main4__box__contaner__bed__right
+          .main4__box__contaner__bed__right__count
+            .main4__box__contaner__bed__right__count__left
+              .main4__box__contaner__bed__right__count__left__text
+                ダブル
+                = f.number_field :d_bed, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+            .main4__box__contaner__bed__right__count__center
+              .main4__box__contaner__bed__right__count__left__text
+                セミダブル
+                = f.number_field :sd_bed, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+            .main4__box__contaner__bed__right__count__right
+              .main4__box__contaner__bed__right__count__left__text
+                シングル
+                = f.number_field :s_bed, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__sofa
+        .main4__box__contaner__sofa__left
+          ソファ
+        .main4__box__contaner__bed__right
+          .main4__box__contaner__bed__right__count
+            .main4__box__contaner__bed__right__count__left
+              .main4__box__contaner__bed__right__count__left__text
+                3人掛け
+                = f.number_field :sofa_3, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+            .main4__box__contaner__bed__right__count__center
+              .main4__box__contaner__bed__right__count__left__text
+                2人掛け
+                = f.number_field :sofa_2, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+            .main4__box__contaner__bed__right__count__right
+              .main4__box__contaner__bed__right__count__left__text
+                1人掛け
+                = f.number_field :sofa_1, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10       
+      .main4__box__contaner__bar
+        ・収納関連
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          食器棚
+        .main4__box__contaner__foundation__right
+          = f.number_field :syokkidana, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          サイドボード
+          %br
+          テレビ台
+        .main4__box__contaner__foundation__right
+          = f.number_field :sideboad, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          タンス類(大)
+        .main4__box__contaner__foundation__right
+          = f.number_field :big_tansu, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          タンス類(小)
+        .main4__box__contaner__foundation__right
+          = f.number_field :min_tansu, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          衣装ケース
+        .main4__box__contaner__foundation__right
+          = f.number_field :isyoucase, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          本棚
+        .main4__box__contaner__foundation__right
+          = f.number_field :hondana, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__bar
+        ・テーブル、机類
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          ダイニングテーブル
+        .main4__box__contaner__foundation__right
+          = f.number_field :big_table, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          リビングテーブル・机
+          %br
+          学習机やパソコン机など
+        .main4__box__contaner__foundation__right
+          = f.number_field :min_table, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation2
+        .main4__box__contaner__foundation2__left
+          こたつ
+        .main4__box__contaner__foundation2__right
+          = f.number_field :kotatu, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation2__left
+          ドレッサー
+        .main4__box__contaner__foundation2__right
+          = f.number_field :doresser, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+    .main4-bar
+      ・家電
+    .main4__box__contaner__kaden
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          テレビ(40インチ以上)
+        .main4__box__contaner__foundation__right
+          = f.number_field :big_tv, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          テレビ(40インチ未満)
+        .main4__box__contaner__foundation__right
+          = f.number_field :min_tv, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          コンポ・ステレオ
+        .main4__box__contaner__foundation__right
+          = f.number_field :conpo, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          パソコン
+        .main4__box__contaner__foundation__right
+          = f.number_field :pc, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          照明器具
+        .main4__box__contaner__foundation__right
+          = f.number_field :syoumei, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          ストーブ・ヒーター
+        .main4__box__contaner__foundation__right
+          = f.number_field :sutobu, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          冷蔵庫(3ドア以上)
+        .main4__box__contaner__foundation__right
+          = f.number_field :big_reizouko, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          冷蔵庫(2ドア)
+        .main4__box__contaner__foundation__right
+          = f.number_field :min_reizouko, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          電子レンジ
+        .main4__box__contaner__foundation__right
+          = f.number_field :renzi, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          乾燥機
+        .main4__box__contaner__foundation__right
+          = f.number_field :kansouki, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          洗濯機(ドラム)
+        .main4__box__contaner__foundation__right
+          = f.number_field :big_sentaku, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          洗濯機(タテ)
+        .main4__box__contaner__foundation__right
+          = f.number_field :min_sentaku, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation3
+        .main4__box__contaner__foundation3__left
+          エアコン
+        .main4__box__contaner__foundation3__right
+          = f.number_field :eacon, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation3__left
+        .main4__box__contaner__foundation3__right
+    .main4-bar
+      ・その他
+    .main4__box__contaner__sonota
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          布団
+        .main4__box__contaner__foundation__right
+          = f.number_field :huton, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          カーペット
+        .main4__box__contaner__foundation__right
+          = f.number_field :kapetto, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          観葉植物・盆栽
+        .main4__box__contaner__foundation__right
+          = f.number_field :tree, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          自転車
+        .main4__box__contaner__foundation__right
+          = f.number_field :tyari, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation
+        .main4__box__contaner__foundation__left
+          仏壇
+        .main4__box__contaner__foundation__right
+          = f.number_field :butudan, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation__left
+          バイク
+        .main4__box__contaner__foundation__right
+          = f.number_field :bike, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+      .main4__box__contaner__foundation3
+        .main4__box__contaner__foundation3__left
+          ピアノ
+        .main4__box__contaner__foundation3__right
+          = f.number_field :piano, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 10
+        .main4__box__contaner__foundation3__left
+        .main4__box__contaner__foundation3__right
+    .main4-bar
+      ・ダンボール
+    .main4__box__contaner__danboru
+      .main4__box__contaner__foundation3
+        .main4__box__contaner__foundation__left
+          ダンボール
+        .main4__box__contaner__foundation__right
+          = f.number_field :danboru, class: "main4__box__contaner__bed__right__count__left__form", placeholder: '0', min: 0, max: 200
+      .main4__box__contaner__danboru__text
+        ・個数の目安
+      .main4__box__contaner__danboru__meta
+        1K・・・・・・10~15個　　　2DK・・・20~30個　　　3DK・・・・・・50個以上　　　およそ1人あたり10~20個が目安となります。
+    .main2__box__bar
+    .main2__box__bottom
+      .main2__box__bottom__contaner
+        = f.submit "次へ進む", class: "main2__box__bottom__contaner__btn-n"
+  = render "footer"
+        

@@ -1,0 +1,388 @@
+= render "header"
+.main-last
+  .main2__box__bar
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      引越しの見積もりをシミュレーション！
+  .main2__box__info__bar
+    .main2__box__info__bar__text
+      .main2__box__info__bar__text__first
+        お引越し日と
+        %br
+        ご家族の人数構成
+      .main2__box__info__bar__text__first
+        現在のご住所と
+        %br
+        お引越し先のご住所
+      .main2__box__info__bar__text__first
+        運搬する
+        %br
+        お荷物を選択
+      .main2__box__info__bar__text__first
+        お見積もり結果
+    .main2__box__info__bar__bottom
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+  .result
+    .result__top
+      引越しシミュレーション結果
+    .result__bottom
+      .result__bottom__top
+        .result__bottom__top__bar
+          .result__bottom__top__bar__info
+            - if @n_prefecture.nil?
+              .result__bottom__top__bar__info__left
+                引越し元
+              .result__bottom__top__bar__info__right
+                東京都
+            - else
+              .result__bottom__top__bar__info__left
+                引越し元
+              .result__bottom__top__bar__info__right
+                = @n_prefecture.name
+          .result__bottom__top__bar__info
+            - if @x_prefecture.nil?
+              .result__bottom__top__bar__info__left
+                引越し先
+              .result__bottom__top__bar__info__right
+                東京都
+            - else
+              .result__bottom__top__bar__info__left
+                引越し先
+              .result__bottom__top__bar__info__right
+                = @x_prefecture.name
+          .result__bottom__top__bar__info
+            - if @day.nil?
+              .result__bottom__top__bar__info__left
+                人数
+              .result__bottom__top__bar__info__right
+                1　人
+            - else
+              .result__bottom__top__bar__info__left
+                人数
+              .result__bottom__top__bar__info__right
+                = @day.n_people
+                人
+          .result__bottom__top__bar__info
+            - if @day.year == "2020年 3月" && "2020年 4月"
+              .result__bottom__top__bar__info__left
+                時期
+              .result__bottom__top__bar__info__right
+                繁忙期
+            - else
+              .result__bottom__top__bar__info__left
+                時期
+              .result__bottom__top__bar__info__right
+                通常期
+            
+      .result__bottom__math
+        .result__bottom__math__box
+          .result__bottom__math__box__left
+            .result__bottom__math__box__left__text
+              平均
+            .result__bottom__math__box__left__price
+              = number_with_delimiter(@average)
+              円
+          .result__bottom__math__box__center
+            .result__bottom__math__box__center__text
+              最安値
+            - if @labor_cost_low.nil?
+              .result__bottom__math__box__center__price
+                = number_with_delimiter(@lowprice + @day_cost_low)
+                円
+            - else
+              .result__bottom__math__box__center__price
+                = number_with_delimiter(@lowprice + @labor_cost_low + @day_cost_low)
+                円
+          .result__bottom__math__box__center
+            .result__bottom__math__box__center__text
+              最高値
+            - if @labor_cost_high.nil?
+              .result__bottom__math__box__center__price
+                = number_with_delimiter(@overprice + @day_cost_high)
+                円
+            - else
+              .result__bottom__math__box__center__price
+                = number_with_delimiter(@overprice + @labor_cost_high + @day_cost_high)
+                円
+  .main4-bar
+    ・選択内容
+  .main5
+    .main5__bar
+      - if @time.nil?
+        .main5__bar__left
+          お引越し希望日
+        .main5__bar__right
+          = @day.year + @day.day
+          ( 時間帯： いつでもよい )
+      - else
+        .main5__bar__left
+          お引越し希望日
+        .main5__bar__right
+          = @day.year + @day.day
+          = "( 時間帯： #{@time.name} )"
+    .main5__bar
+      .main5__bar__left
+        お引越し人数
+      .main5__bar__right
+        = @day.n_people
+        人
+
+    .main5__title
+      ・引越し元のお住まい
+    .main5__bar
+      - if @n_prefecture.nil?
+        .main5__bar__left
+          引越し元の住所
+        .main5__bar__right
+          東京都
+      - else
+        .main5__bar__left
+          引越し元の住所
+        .main5__bar__right
+          = @n_prefecture.name
+    .main5__bar
+      - if @n_building.nil?
+        .main5__bar__left
+          建物タイプ
+        .main5__bar__right
+          選択されていません
+      - else
+        .main5__bar__left
+          建物タイプ
+        .main5__bar__right
+          = @n_building.name
+    .main5__bar
+      - if @user.n_b_floor.nil? && @user.n_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "---階建ての---階から引越し"
+      - elsif @user.n_b_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "---階建ての#{@user.n_floor}階から引越し"
+      - elsif @user.n_b_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "#{@user.n_b_floor}階建ての---階から引越し"
+      - else
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = @user.n_b_floor
+          階建ての
+          = @user.n_floor
+          階引越し
+    .main5__bar
+      - if @n_elevator.nil?
+        .main5__bar__left
+          エレベーター
+        .main5__bar__right
+          選択されていません
+      - else
+        .main5__bar__left
+          エレベーター
+        .main5__bar__right
+          = @n_elevator.name
+    .main5__title
+      ・引越し先のお住まい
+    .main5__bar
+      - if @x_prefecture.nil?
+        .main5__bar__left
+          引越し先の住所
+        .main5__bar__right
+          東京都
+      - else
+        .main5__bar__left
+          引越し先の住所
+        .main5__bar__right
+          = @x_prefecture.name
+    .main5__bar
+      - if @x_building.nil?
+        .main5__bar__left
+          建物タイプ
+        .main5__bar__right
+          選択されていません
+      - else
+        .main5__bar__left
+          建物タイプ
+        .main5__bar__right
+          = @x_building.name
+    .main5__bar
+      - if @user.x_b_floor.nil? && @user.x_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "---階建ての---階へ引越し"
+      - elsif @user.n_b_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "---階建ての#{@user.x_floor}階から引越し"
+      - elsif @user.n_b_floor.nil?
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = "#{@user.x_b_floor}階建ての---階から引越し"
+      - else
+        .main5__bar__left
+          建物階数
+        .main5__bar__right
+          = @user.x_b_floor
+          階建ての
+          = @user.x_floor
+          階へ引越し
+    .main5__bar__bottom
+      - if @x_elevator.nil?
+        .main5__bar__left
+          エレベーター
+        .main5__bar__right
+          選択されていません
+      - else
+        .main5__bar__left
+          エレベーター
+        .main5__bar__right
+          = @x_elevator.name
+    .main5__end
+      ・家具
+    %ul
+      - @display.each do |key, value|
+        - unless key == "created_at" || key == "updated_at" || key == "id" 
+          - if key == "d_bed"
+            %li
+              = "ダブルベッド × #{value}"
+          - if key == "sd_bed"
+            %li
+              = "セミダブルベッド × #{value}"
+          - if key == "s_bed"
+            %li
+              = "シングルベッド × #{value}"
+          - if key == "sofa_3"
+            %li
+              = "ソファ(3人掛け) × #{value}"
+          - if key == "sofa_2"
+            %li
+              = "ソファ(2人掛け) × #{value}" 
+          - if key == "sofa_1"
+            %li
+              = "ソファ(1人掛け) × #{value}"
+          - if key == "syokkidana"
+            %li
+              = "食器棚 × #{value}"
+          - if key == "sideboad"
+            %li
+              = "サイドボード × #{value}" 
+          - if key == "big_tansu"
+            %li
+              = "タンス類(大) × #{value}"
+          - if key == "min_tansu"
+            %li
+              = "タンス類(小) × #{value}"
+          - if key == "isyoucase"
+            %li
+              = "衣装ケース × #{value}"
+          - if key == "hondana"
+            %li
+              = "本棚 × #{value}"
+          - if key == "big_table"
+            %li
+              = "ダイニングテーブル × #{value}"
+          - if key == "min_table"
+            %li
+              = "リビングテーブル・机 × #{value}"
+          - if key == "kotatu"
+            %li
+              = "こたつ × #{value}"
+          - if key == "doresser"
+            %li
+              = "ドレッサー × #{value}"
+    .main5__end
+      ・家電
+    %ul
+      - @display.each do |key, value|
+        - unless key == "created_at" || key == "updated_at" || key == "id" 
+          - if key == "big_tv"
+            %li
+              = "テレビ(40インチ以上) × #{value}"
+          - if key == "min_tv"
+            %li
+              = "テレビ(39インチ未満) × #{value}"
+          - if key == "conpo"
+            %li
+              = "コンポ・ステレオ × #{value}"
+          - if key == "pc"
+            %li
+              = "パソコン × #{value}"
+          - if key == "syoumei"
+            %li
+              = "照明器具 × #{value}"
+          - if key == "sutobu"
+            %li
+              = "ストーブ・ヒーター × #{value}"
+          - if key == "big_reizouko"
+            %li
+              = "冷蔵庫(3ドア以上) × #{value}"
+          - if key == "min_reizouko"
+            %li
+              = "冷蔵庫(2ドア以上) × #{value}"
+          - if key == "renzi"
+            %li
+              = "電子レンジ × #{value}"
+          - if key == "kansouki"
+            %li
+              = "乾燥機 × #{value}"
+          - if key == "big_sentaku"
+            %li
+              = "洗濯機(ドラム) × #{value}"
+          - if key == "min_sentaku"
+            %li
+              = "洗濯機(タテ) × #{value}"
+          - if key == "eacon"
+            %li
+              = "エアコン × #{value}"
+    .main5__end
+      ・その他
+    %ul
+      - @display.each do |key, value|
+        - unless key == "created_at" || key == "updated_at" || key == "id" 
+          - if key == "huton"
+            %li
+              = "布団 × #{value}"
+          - if key == "kapetto"
+            %li
+              = "カーペット × #{value}"
+          - if key == "tree"
+            %li
+              = "植木・観葉植物 × #{value}"
+          - if key == "tyari"
+            %li
+              = "自転車 × #{value}"
+          - if key == "butudan"
+            %li
+              = "仏壇 × #{value}"
+          - if key == "bike"
+            %li
+              = "バイク × #{value}"
+          - if key == "piano"
+            %li
+              = "ピアノ × #{value}"
+          - if key == "danboru"
+            %li
+              = "ダンボール × #{value}"
+
+= render "footer"
+
+
+
+
+

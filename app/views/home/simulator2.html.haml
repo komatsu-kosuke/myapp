@@ -1,0 +1,59 @@
+= render "header"
+.main2
+  .main2__box__bar
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      引越しの見積もりをシミュレーション！
+  .main2__box__info__bar
+    .main2__box__info__bar__text
+      .main2__box__info__bar__text__first
+        お引越し日と
+        %br
+        ご家族の人数構成
+      .main2__box__info__bar__text__second
+        現在のご住所と
+        %br
+        お引越し先のご住所
+      .main2__box__info__bar__text__third
+        運搬する
+        %br
+        お荷物を選択
+      .main2__box__info__bar__text__forth
+        お見積もり結果
+    .main2__box__info__bar__bottom
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+  = form_for(@day, url: simulator3_home_index_path, method: :get) do |f|
+    .main2__box__contaner
+      .main2__box__contaner__top
+        お引越し日とご家族の人数構成
+      .main3-title
+        .main3-title__left
+          お引越し希望日
+        .main3-title__right
+          = f.select :year, ["2020年 3月","2020年 4月","2020年 5月","2020年 6月","2020年 7月","2020年 8月"]
+          = f.select :day, ["上旬","中旬","下旬"]
+          -# = f.date_field :day, use_month_numbers: true, class: "main2__box__contaner__form__calender"
+      .main3-title
+        .main3-title__left
+          作業開始時間
+        .main3-title__right
+          = f.collection_radio_buttons :time, Timer.all, :id, :name
+      .main3-title
+        .main3-title__left
+          お引越し人数
+        .main3-title__right
+          = f.select :n_people, ["1","2","3","4","5","6","7","8","9","10"]
+          人
+    .main2__box__bottom
+      .main2__box__bottom__contaner
+        = link_to "戻る", root_path, class: "main2__box__bottom__contaner__btn-m"
+        = f.submit "次へ進む", class: "main2__box__bottom__contaner__btn-n"
+  = render "footer"

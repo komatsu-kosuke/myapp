@@ -1,0 +1,110 @@
+= render "header"
+.main-t
+  .main2__box__bar
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      引越しの見積もりをシミュレーション！
+  .main2__box__info__bar
+    .main2__box__info__bar__text
+      .main2__box__info__bar__text__first
+        お引越し日と
+        %br
+        ご家族の人数構成
+      .main2__box__info__bar__text__first
+        現在のご住所と
+        %br
+        お引越し先のご住所
+      .main2__box__info__bar__text__third
+        運搬する
+        %br
+        お荷物を選択
+      .main2__box__info__bar__text__forth
+        お見積もり結果
+    .main2__box__info__bar__bottom
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar
+      .main2__box__info__bar__bottom__sircle
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+      .main2__box__info__bar__bottom__bar-gray
+      .main2__box__info__bar__bottom__sircle-gray
+  = form_for(@user, url: simulator4_home_index_path, method: :get) do |f|
+    .main3__box__contaner
+      .main2__box__contaner__top
+        現在のご住所
+      .main3-title
+        .main3-title__left
+          郵便番号
+        .main3-title__right
+          = f.text_field :n_zipcode, class: "main3-title__right__input", placeholder: '例) 123-1234'
+      .main3-title
+        .main3-title__left
+          都道府県
+        .main3-title__right
+          = f.collection_select :n_prefecture, Prefecture.all, :id, :name, {prompt: "選択"}, {class: "main3-title__right__prefecture"}
+      .main3-title
+        .main3-title__left
+          建物タイプ
+        .main3-title__right
+          = f.collection_radio_buttons :n_building, Building.all, :id, :name
+      .main3-title
+        .main3-title__left
+          建物階数
+        .main3-title__right
+          = f.select :n_b_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor"}
+          階建て
+          = f.select :n_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor2"}
+          階から引越し
+      .main3-title
+        .main3-title__left
+          エレベーター
+        .main3-title__right
+          = f.collection_radio_buttons :n_elevator, Elevator.all, :id, :name
+      .main3-title
+        .main3-title__left
+          道幅
+        .main3-title__right-road
+          = f.collection_radio_buttons :n_roadwidth, Roadwidth.all, :id, :name
+    .main3__box__contaner
+      .main2__box__contaner__top
+        お引越し先のご住所
+      .main3-title
+        .main3-title__left
+          郵便番号
+        .main3-title__right
+          = f.text_field :x_zipcode, class: "main3-title__right__input", placeholder: '例) 123-1234'
+      .main3-title
+        .main3-title__left
+          都道府県
+        .main3-title__right
+          = f.collection_select :x_prefecture, Prefecture.all, :id, :name, {prompt: "選択"}, {class: "main3-title__right__prefecture"}
+      .main3-title
+        .main3-title__left
+          建物タイプ
+        .main3-title__right
+          = f.collection_radio_buttons :x_building, Building.all, :id, :name
+      .main3-title
+        .main3-title__left
+          建物階数
+        .main3-title__right
+          = f.select :x_b_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor"}
+          階建て
+          = f.select :x_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor2"}
+          階から引越し
+      .main3-title
+        .main3-title__left
+          エレベーター
+        .main3-title__right
+          = f.collection_radio_buttons :x_elevator, Elevator.all, :id, :name
+      .main3-title
+        .main3-title__left
+          道幅
+        .main3-title__right-road
+          = f.collection_radio_buttons :x_roadwidth, Roadwidth.all, :id, :name
+    .main2__box__bottom
+      .main2__box__bottom__contaner
+        = link_to "戻る", simulator2_home_index_path, class: "main2__box__bottom__contaner__btn-m"
+        = f.submit "次へ進む", class: "main2__box__bottom__contaner__btn-n"
+  = render "footer"
