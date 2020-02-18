@@ -21,16 +21,16 @@ class HomeController < ApplicationController
       n_floor = @user.errors.full_messages_for(:n_floor)
       x_floor = @user.errors.full_messages_for(:x_floor)
       if n_b_floor == ["何階建てかを入力してください"]
-        @n_b_floor = "何階建てかを入力してください"
+        @n_b_floor = "何階建てかを入力してください。"
       end
       if n_floor == ["何階からお引越しかを入力してください"]
-        @n_floor = "何階からお引越しかを入力してください"
+        @n_floor = "何階からお引越しかを入力してください。"
       end
       if x_b_floor == ["何階建てかを入力してください"]
-        @x_b_floor = "何階建てかを入力してください"
+        @x_b_floor = "何階建てかを入力してください。"
       end
       if x_floor == ["何階へお引越しかを入力してください"]
-        @x_floor = "何階へお引越しかを入力してください"
+        @x_floor = "何階へお引越しかを入力してください。"
       end
       render :simulator3 and return
     end
@@ -45,7 +45,7 @@ class HomeController < ApplicationController
     unless @baggage.valid?
       baggage_valid = @baggage.errors.full_messages_for(:baggages_valid)
       if baggage_valid == ["Baggages validを入力してください"]
-        @baggage_valid = "荷物を最低一つ選択してください"
+        @baggage_valid = "荷物を一つ以上選択してください。"
       end
       render :simulator4 and return
     end

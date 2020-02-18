@@ -33,13 +33,13 @@
   = form_for(@user, url: simulator4_home_index_path, method: :get) do |f|
     - if @user.errors.any?
       .error
-        .error__box
-          .error__box__text
-            %i.fas.fa-exclamation-triangle
-            = @n_b_floor
-          .error__box__text
-            %i.fas.fa-exclamation-triangle
-            = @n_floor
+        %i.fas.fa-exclamation-triangle
+        = @n_b_floor
+        = @n_floor
+        (現在のご住所)
+        = @x_b_floor
+        = @x_floor
+        (引越し先のご住所)
     .main3__box__contaner
       .main2__box__contaner__top
         現在のご住所
@@ -95,15 +95,6 @@
           = f.label :n_roadwidth, '自動車1台が通行できる', value: :c
           = f.radio_button :n_roadwidth, :d
           = f.label :n_roadwidth, '自動車が通行できない', value: :d
-    - if @user.errors.any?
-      .error
-        .error__box
-          .error__box__text
-            %i.fas.fa-exclamation-triangle
-            = @x_b_floor
-          .error__box__text
-            %i.fas.fa-exclamation-triangle
-            = @x_floor
     .main3__box__contaner
       .main2__box__contaner__top
         お引越し先のご住所
