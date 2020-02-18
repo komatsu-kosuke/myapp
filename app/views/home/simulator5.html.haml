@@ -116,18 +116,20 @@
     ・選択内容
   .main5
     .main5__bar
-      - if @time.nil?
-        .main5__bar__left
-          お引越し希望日
+      .main5__bar__left
+        お引越し希望日
+      - if @day.time == "a"
+        .main5__bar__right
+          = @day.year + @day.day
+          ( 時間帯： 午前 )
+      - elsif @day.time == "b"
+        .main5__bar__right
+          = @day.year + @day.day
+          ( 時間帯： 午後 )
+      - elsif @day.time == "c"
         .main5__bar__right
           = @day.year + @day.day
           ( 時間帯： いつでもよい )
-      - else
-        .main5__bar__left
-          お引越し希望日
-        .main5__bar__right
-          = @day.year + @day.day
-          = "( 時間帯： #{@time.name} )"
     .main5__bar
       .main5__bar__left
         お引越し人数
@@ -138,27 +140,32 @@
     .main5__title
       ・引越し元のお住まい
     .main5__bar
+      .main5__bar__left
+        引越し元の住所
       - if @n_prefecture.nil?
-        .main5__bar__left
-          引越し元の住所
         .main5__bar__right
           東京都
       - else
-        .main5__bar__left
-          引越し元の住所
         .main5__bar__right
           = @n_prefecture.name
     .main5__bar
-      - if @n_building.nil?
-        .main5__bar__left
-          建物タイプ
+      .main5__bar__left
+        建物タイプ
+      - if @user.n_building == "a"
         .main5__bar__right
-          選択されていません
-      - else
-        .main5__bar__left
-          建物タイプ
+          マンション
+      - elsif @user.n_building == "b"
         .main5__bar__right
-          = @n_building.name
+          アパート
+      - elsif @user.n_building == "c"
+        .main5__bar__right
+          戸建て
+      - elsif @user.n_building == "d"
+        .main5__bar__right
+          タワーマンション
+      - elsif @user.n_building == "e"
+        .main5__bar__right
+          その他
     .main5__bar
       - if @user.n_b_floor.nil? && @user.n_floor.nil?
         .main5__bar__left
@@ -182,18 +189,16 @@
           = @user.n_b_floor
           階建ての
           = @user.n_floor
-          階引越し
+          階から引越し
     .main5__bar
-      - if @n_elevator.nil?
-        .main5__bar__left
-          エレベーター
+      .main5__bar__left
+        エレベーター
+      - if @user.n_elevator == "a"
         .main5__bar__right
-          選択されていません
-      - else
-        .main5__bar__left
-          エレベーター
+          あり
+      - elsif @user.n_elevator == "b"
         .main5__bar__right
-          = @n_elevator.name
+          なし
     .main5__title
       ・引越し先のお住まい
     .main5__bar
@@ -208,16 +213,23 @@
         .main5__bar__right
           = @x_prefecture.name
     .main5__bar
-      - if @x_building.nil?
-        .main5__bar__left
-          建物タイプ
+      .main5__bar__left
+        建物タイプ
+      - if @user.x_building == "a"
         .main5__bar__right
-          選択されていません
-      - else
-        .main5__bar__left
-          建物タイプ
+          マンション
+      - elsif @user.x_building == "b"
         .main5__bar__right
-          = @x_building.name
+          アパート
+      - elsif @user.x_building == "c"
+        .main5__bar__right
+          戸建て
+      - elsif @user.x_building == "d"
+        .main5__bar__right
+          タワーマンション
+      - elsif @user.x_building == "e"
+        .main5__bar__right
+          その他
     .main5__bar
       - if @user.x_b_floor.nil? && @user.x_floor.nil?
         .main5__bar__left
@@ -243,16 +255,14 @@
           = @user.x_floor
           階へ引越し
     .main5__bar__bottom
-      - if @x_elevator.nil?
-        .main5__bar__left
-          エレベーター
+      .main5__bar__left
+        エレベーター
+      - if @user.x_elevator == "a"
         .main5__bar__right
-          選択されていません
-      - else
-        .main5__bar__left
-          エレベーター
+          あり
+      - elsif @user.x_elevator == "b"
         .main5__bar__right
-          = @x_elevator.name
+          なし
     .main5__end
       ・家具
     %ul

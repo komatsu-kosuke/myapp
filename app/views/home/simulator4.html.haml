@@ -31,6 +31,12 @@
       .main2__box__info__bar__bottom__bar-gray
       .main2__box__info__bar__bottom__sircle-gray
   = form_for(@baggage, url: home_index_path, method: :post) do |f|
+    - if @baggage.errors.any?
+      .error
+        .error__box
+          .error__box__text
+            %i.fas.fa-exclamation-triangle
+            = @baggage_valid
     .main4-title
       運搬する荷物を選択
     .main4-bar

@@ -1,6 +1,5 @@
 class Day < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :timer
+
 
   def day_cost_high
     if Day.last.year == "2020年 3月"

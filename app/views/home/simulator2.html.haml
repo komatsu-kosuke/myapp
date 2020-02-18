@@ -40,12 +40,16 @@
         .main3-title__right
           = f.select :year, ["2020年 3月","2020年 4月","2020年 5月","2020年 6月","2020年 7月","2020年 8月"]
           = f.select :day, ["上旬","中旬","下旬"]
-          -# = f.date_field :day, use_month_numbers: true, class: "main2__box__contaner__form__calender"
       .main3-title
         .main3-title__left
           作業開始時間
         .main3-title__right
-          = f.collection_radio_buttons :time, Timer.all, :id, :name
+          = f.radio_button :time, :a
+          = f.label :time, "午前", value: :a
+          = f.radio_button :time, :b
+          = f.label :time, "午後", value: :b
+          = f.radio_button :time, :c, checked: true
+          = f.label :time, "いつでもよい", value: :c
       .main3-title
         .main3-title__left
           お引越し人数

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        n_b_floor: 何階建てか
+        n_floor: 何階からお引越しか
+        x_b_floor: 何階建てか
+        x_floor: 何階へお引越しか

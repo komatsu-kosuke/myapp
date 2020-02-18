@@ -539,14 +539,14 @@
   }
 }
 
-#day_time_1 {
+#day_time_a {
   margin-right: 5px;
 }
-#day_time_2 {
+#day_time_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#day_time_3 {
+#day_time_c {
   margin-right: 5px;
   margin-left: 10px;
 }
@@ -637,87 +637,112 @@
   display: flex;
   align-items: center;
 }
-#user_n_building_1 {
+#user_n_building_a {
   margin-right: 5px;
 }
-#user_n_building_2 {
+#user_n_building_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_building_3 {
+#user_n_building_c {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_building_4 {
+#user_n_building_d {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_building_5 {
+#user_n_building_e {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_building_1 {
+#user_x_building_a {
   margin-right: 5px;
 }
-#user_x_building_2 {
+#user_x_building_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_building_3 {
+#user_x_building_c {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_building_4 {
+#user_x_building_d {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_building_5 {
+#user_x_building_e {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_roadwidth_1 {
+#user_n_roadwidth_a {
   margin-right: 5px;
 }
-#user_n_roadwidth_2 {
+#user_n_roadwidth_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_roadwidth_3 {
+#user_n_roadwidth_c {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_roadwidth_4 {
+#user_n_roadwidth_d {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_roadwidth_1 {
+#user_x_roadwidth_a {
   margin-right: 5px;
 }
-#user_x_roadwidth_2 {
+#user_x_roadwidth_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_roadwidth_3 {
+#user_x_roadwidth_c {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_roadwidth_4 {
+#user_x_roadwidth_d {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_n_elevator_1 {
+#user_n_elevator_a {
   margin-right: 5px;
 }
-#user_n_elevator_2 {
+#user_n_elevator_b {
   margin-right: 5px;
   margin-left: 10px;
 }
-#user_x_elevator_1 {
+#user_x_elevator_a {
   margin-right: 5px;
 }
-#user_x_elevator_2 {
+#user_x_elevator_b {
   margin-right: 5px;
   margin-left: 10px;
+}
+
+.error {
+  width: 100%;
+  height: 50px;
+  &__box {
+    width: 60%;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    &__text {
+      width: 40%;
+      height: 40px;
+      background-color: yellow;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #dc143cef;
+      font-weight: bold;
+      font-size: 15px;
+      border-radius: 5px;
+      border: solid 1px #dc143cef;;
+    }
+  }
 }
 // ------------------4ページ目-------------------------
 

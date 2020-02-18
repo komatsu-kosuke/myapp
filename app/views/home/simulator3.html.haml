@@ -31,6 +31,15 @@
       .main2__box__info__bar__bottom__bar-gray
       .main2__box__info__bar__bottom__sircle-gray
   = form_for(@user, url: simulator4_home_index_path, method: :get) do |f|
+    - if @user.errors.any?
+      .error
+        .error__box
+          .error__box__text
+            %i.fas.fa-exclamation-triangle
+            = @n_b_floor
+          .error__box__text
+            %i.fas.fa-exclamation-triangle
+            = @n_floor
     .main3__box__contaner
       .main2__box__contaner__top
         現在のご住所
@@ -48,7 +57,16 @@
         .main3-title__left
           建物タイプ
         .main3-title__right
-          = f.collection_radio_buttons :n_building, Building.all, :id, :name
+          = f.radio_button :n_building, :a
+          = f.label :n_building, 'マンション', value: :a
+          = f.radio_button :n_building, :b
+          = f.label :n_building, 'アパート', value: :b
+          = f.radio_button :n_building, :c
+          = f.label :n_building, '戸建て', value: :c
+          = f.radio_button :n_building, :d
+          = f.label :n_building, 'タワーマンション', value: :d
+          = f.radio_button :n_building, :e, checked: true
+          = f.label :n_building, 'その他', value: :e
       .main3-title
         .main3-title__left
           建物階数
@@ -61,12 +79,31 @@
         .main3-title__left
           エレベーター
         .main3-title__right
-          = f.collection_radio_buttons :n_elevator, Elevator.all, :id, :name
+          = f.radio_button :n_elevator, :a, checked: true
+          = f.label :n_elevator, 'あり', value: :a
+          = f.radio_button :n_elevator, :b
+          = f.label :n_elevator, 'なし', value: :b
       .main3-title
         .main3-title__left
           道幅
         .main3-title__right-road
-          = f.collection_radio_buttons :n_roadwidth, Roadwidth.all, :id, :name
+          = f.radio_button :n_roadwidth, :a, checked: true
+          = f.label :n_roadwidth, '自動車2台が余裕ですれ違える', value: :a
+          = f.radio_button :n_roadwidth, :b
+          = f.label :n_roadwidth, '自動車2台がギリギリですれ違える', value: :b
+          = f.radio_button :n_roadwidth, :c
+          = f.label :n_roadwidth, '自動車1台が通行できる', value: :c
+          = f.radio_button :n_roadwidth, :d
+          = f.label :n_roadwidth, '自動車が通行できない', value: :d
+    - if @user.errors.any?
+      .error
+        .error__box
+          .error__box__text
+            %i.fas.fa-exclamation-triangle
+            = @x_b_floor
+          .error__box__text
+            %i.fas.fa-exclamation-triangle
+            = @x_floor
     .main3__box__contaner
       .main2__box__contaner__top
         お引越し先のご住所
@@ -84,7 +121,16 @@
         .main3-title__left
           建物タイプ
         .main3-title__right
-          = f.collection_radio_buttons :x_building, Building.all, :id, :name
+          = f.radio_button :x_building, :a
+          = f.label :x_building, 'マンション', value: :a
+          = f.radio_button :x_building, :b
+          = f.label :x_building, 'アパート', value: :b
+          = f.radio_button :x_building, :c
+          = f.label :x_building, '戸建て', value: :c
+          = f.radio_button :x_building, :d
+          = f.label :x_building, 'タワーマンション', value: :d
+          = f.radio_button :x_building, :e, checked: true
+          = f.label :x_building, 'その他', value: :e
       .main3-title
         .main3-title__left
           建物階数
@@ -97,12 +143,22 @@
         .main3-title__left
           エレベーター
         .main3-title__right
-          = f.collection_radio_buttons :x_elevator, Elevator.all, :id, :name
+          = f.radio_button :x_elevator, :a, checked: true
+          = f.label :x_elevator, 'あり', value: :a
+          = f.radio_button :x_elevator, :b
+          = f.label :x_elevator, 'なし', value: :b
       .main3-title
         .main3-title__left
           道幅
         .main3-title__right-road
-          = f.collection_radio_buttons :x_roadwidth, Roadwidth.all, :id, :name
+          = f.radio_button :x_roadwidth, :a, checked: true
+          = f.label :x_roadwidth, '自動車2台が余裕ですれ違える', value: :a
+          = f.radio_button :x_roadwidth, :b
+          = f.label :x_roadwidth, '自動車2台がギリギリですれ違える', value: :b
+          = f.radio_button :x_roadwidth, :c
+          = f.label :x_roadwidth, '自動車1台が通行できる', value: :c
+          = f.radio_button :x_roadwidth, :d
+          = f.label :x_roadwidth, '自動車が通行できない', value: :d
     .main2__box__bottom
       .main2__box__bottom__contaner
         = link_to "戻る", simulator2_home_index_path, class: "main2__box__bottom__contaner__btn-m"

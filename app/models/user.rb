@@ -1,10 +1,12 @@
 class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :building
-  belongs_to_active_hash :elevator
-  belongs_to_active_hash :roadwidth
 
+  validates :n_b_floor, presence: true
+  validates :n_floor, presence: true
+  validates :x_b_floor, presence: true
+  validates :x_floor, presence: true
+  
   def labor_cost_high
     
     if User.last.n_floor == 1
@@ -42,16 +44,24 @@ class User < ApplicationRecord
     end
 
   
-    if User.last.n_elevator == "1"
+    if User.last.n_elevator == "a"
       cost_e = 5500
     end
-    if User.last.n_elevator == "2"
+    if User.last.n_elevator == "b"
       cost_e = 16500
     end
 
-    unless cost.nil? && cost_e.nil?
-      cost + cost_e
+    if User.last.x_elevator == "a"
+      cost_x = 5500
     end
+    if User.last.x_elevator == "b"
+      cost_x = 16500
+    end
+
+    unless cost.nil? && cost_e.nil?
+      cost + cost_e + cost_x
+    end
+    
   end
 
   def labor_cost_low
@@ -91,15 +101,22 @@ class User < ApplicationRecord
     end
 
     
-    if User.last.n_elevator == "1"
+    if User.last.n_elevator == "a"
       cost_e = 4500
     end
-    if User.last.n_elevator == "2"
+    if User.last.n_elevator == "b"
       cost_e = 15500
     end
 
+    if User.last.x_elevator == "a"
+      cost_x = 4500
+    end
+    if User.last.x_elevator == "b"
+      cost_x = 15500
+    end
+
     unless cost.nil? && cost_e.nil?
-      cost + cost_e
+      cost + cost_e + cost_x
     end
   end
 

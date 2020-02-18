@@ -1,5 +1,8 @@
 class Baggage < ApplicationRecord
 
+  validates :baggages_valid, presence: true
+
+
   def overprice
 
     if baggage_d_bed = Baggage.last.d_bed.nil?
@@ -533,5 +536,12 @@ class Baggage < ApplicationRecord
     total = @overprice_result + @lowprice_result
     result = total / 2
   end
+
+  private
+  
+    def baggages_valid
+      d_bed.presence or sd_bed.presence or s_bed.presence or sofa_3.presence or sofa_2.presence or sofa_1.presence or syokkidana.presence or sideboad.presence or big_tansu.presence or min_tansu.presence or isyoucase.presence or hondana.presence or big_table.presence or min_table.presence or kotatu.presence or doresser.presence or big_tv.presence or min_tv.presence or conpo.presence or pc.presence or syoumei.presence or sutobu.presence or big_reizouko.presence or min_reizouko.presence or renzi.presence or kansouki.presence or big_sentaku.presence or min_sentaku.presence or eacon.presence or huton.presence or kapetto.presence or tree.presence or tyari.presence or butudan.presence or bike.presence or piano.presence
+      
+    end
 
 end
