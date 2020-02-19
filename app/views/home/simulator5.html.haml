@@ -88,29 +88,29 @@
             .result__bottom__math__box__left__text
               平均
             .result__bottom__math__box__left__price
-              = number_with_delimiter(@average)
+              = number_with_delimiter(@average + @distance)
               円
           .result__bottom__math__box__center
             .result__bottom__math__box__center__text
               最安値
             - if @labor_cost_low.nil?
               .result__bottom__math__box__center__price
-                = number_with_delimiter(@lowprice + @day_cost_low)
+                = number_with_delimiter(@lowprice + @day_cost_low + @distance)
                 円
             - else
               .result__bottom__math__box__center__price
-                = number_with_delimiter(@lowprice + @labor_cost_low + @day_cost_low)
+                = number_with_delimiter(@lowprice + @labor_cost_low + @day_cost_low + @distance)
                 円
           .result__bottom__math__box__center
             .result__bottom__math__box__center__text
               最高値
             - if @labor_cost_high.nil?
               .result__bottom__math__box__center__price
-                = number_with_delimiter(@overprice + @day_cost_high)
+                = number_with_delimiter(@overprice + @day_cost_high + @distance)
                 円
             - else
               .result__bottom__math__box__center__price
-                = number_with_delimiter(@overprice + @labor_cost_high + @day_cost_high)
+                = number_with_delimiter(@overprice + @labor_cost_high + @day_cost_high + @distance)
                 円
   .main4-bar
     ・選択内容

@@ -68,11 +68,14 @@ class HomeController < ApplicationController
     @labor_cost_low = @user.labor_cost_low
     @day_cost_high = @day.day_cost_high
     @day_cost_low = @day.day_cost_low
+    @distance = @user.distance
     if @user.average_user.nil?
       @average = @baggage.average_baggage + @day.average_day
     else
       @average = @baggage.average_baggage + @user.average_user + @day.average_day
     end
+    
+    
   end
 
   # helper_method :average
