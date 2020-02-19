@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :n_floor, presence: true
   validates :x_b_floor, presence: true
   validates :x_floor, presence: true
+  geocoded_by :address
+  after_validation :geocode
   
   def labor_cost_high
     

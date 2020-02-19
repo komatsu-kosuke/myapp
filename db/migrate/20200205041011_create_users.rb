@@ -15,7 +15,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :x_floor
       t.string :x_elevator
       t.string :x_roadwidth
-
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

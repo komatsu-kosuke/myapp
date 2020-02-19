@@ -79,6 +79,9 @@ ActiveRecord::Schema.define(version: 2020_02_05_041049) do
     t.integer "x_floor"
     t.string "x_elevator"
     t.string "x_roadwidth"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

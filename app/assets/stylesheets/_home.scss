@@ -139,7 +139,7 @@
   &__box__contaner {
     width: 57%;
     height: 450px;
-    background-color: #deb88770;
+    background: image-url("haikei.jpeg") center top/cover no-repeat;
     padding: 20px 30px;
     border-radius: 10px;
     margin: auto;
@@ -337,7 +337,7 @@
   &__box__info {
     width: 60%;
     height: 100px;
-    background-color: #deb88770;
+    background: image-url("haikei.jpeg") center top/cover no-repeat;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -1204,7 +1204,7 @@
   display: flex;
 }
 .main5__end {
-  width: 100%;
+  width: 99%;
   height: 40px;
   background-color: #dcdcdc9f;
   border-left: solid 1px rgba(0, 0, 0, 0.329);
@@ -1212,19 +1212,31 @@
   display: flex;
   align-items: center;
   font-weight: bold;
+  padding-right: 8px;
 }
 
+.btn-field {
+  width: 100%;
+  height: 100px;
+  margin-top: 50px;
+}
+
+.main5-footer {
+  width:100%;
+  height: 152px;
+  margin-top: 800px;
+}
 ul {
   border-bottom: solid 1px rgba(0, 0, 0, 0.329);
   border-left: solid 1px rgba(0, 0, 0, 0.329);
   border-right: solid 1px rgba(0, 0, 0, 0.329);
-  padding: 20px;
-  width: 824px;
+  padding: 21px;
+  width: 95%;
   
 }
 li {
   display: inline-block;
-  width: 400px;
+  width: 48%;
 }
 td {
   display: block;
