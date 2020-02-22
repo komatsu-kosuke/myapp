@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       get 'simulator5'
     end
   end
+
+  resources :lists, only: [:index]
 end
