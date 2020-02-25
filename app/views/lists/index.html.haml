@@ -16,38 +16,40 @@
       テレビCMでおなじみの大手引越し業者から、地域密着型の地元の人達から高い評判を得ている業者まで、全国の引っ越し業者と提携しています。
       この見積もりサービスは、これらの引越会社に対して見積りを依頼し、複数の見積り料金を比較することで、最安値の引越し業者を簡単に見つけることができます。
   - @company.each do |company|
-    .list__blank
-    .company
-      .company__top
-        .company__top__image
-          = image_tag "#{company.image}", width: "90px"
-        .company__top__box
-          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
-          .company__top__box__evaluation
-            総合評価⭐️⭐️⭐️⭐️⭐️
-      .company__list
-        .company__list__a
-          電話・メール対応
-        .company__list__a
-          見積もり対応
-        .company__list__a
-          作業員
-        .company__list__a
-          サービス
-      .company__bottom
-        .company__bottom__box
-          .company__bottom__box__image
-          .company__bottom__box__text
-            .company__bottom__box__text__container
-              .company__bottom__box__text__container__kuchi
-                最新の口コミ
-              .company__bottom__box__text__container__title
-                = @comment
-        .company__bottom__inner
-          .company__bottom__inner__evaluation
-            評価点数⭐️⭐️⭐️⭐️⭐️
-          .company__bottom__inner__day
-            投稿日： 2020年2月22日
-        .company__bottom__text
-          今回2回目利用させていただきました。 相場はもう少し安くできる業者もあるとは思いましたが、凄く気に入った新居なので大切に引っ越しをしていただけそうなアークさんを選ばせてもらいました。 また、7ヶ月の子供もいる引っ越しでしたので、小さい子への配慮をしてくれそうなところかも考えていました。見積もり面談のときや、スタッフの方が子供を意識してくれる対応が良かったです。 引っ越しの業務を担当されたスタッフさんの第一印象もよく、近隣住人の方や新居の管理人の方への挨拶や配慮がすごく良かったです。 引っ越し間際も、日にちのぎりぎりの調整や新居移転に伴う諸業務のアドバイスも対応していただけましたのでとても満足しております。 トータルで見ても最初から最後まで家族共々安心感ある引っ越しでした。また、引っ越しの際はお願いしようと検討しております。
+    - unless Comment.where(company_id: company.id).last(1).empty?
+      - @a = Comment.where(company_id: company.id).last(1)
+      .list__blank
+      .company
+        .company__top
+          .company__top__image
+            = image_tag "#{company.image}", width: "90px"
+          .company__top__box
+            = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+            .company__top__box__evaluation
+              総合評価⭐️⭐️⭐️⭐️⭐️
+        .company__list
+          .company__list__a
+            電話・メール対応
+          .company__list__a
+            見積もり対応
+          .company__list__a
+            作業員
+          .company__list__a
+            サービス
+        .company__bottom
+          .company__bottom__box
+            .company__bottom__box__image
+            .company__bottom__box__text
+              .company__bottom__box__text__container
+                .company__bottom__box__text__container__kuchi
+                  最新の口コミ
+                .company__bottom__box__text__container__title
+                  = @a[0]["title"]
+          .company__bottom__inner
+            .company__bottom__inner__evaluation
+              評価点数⭐️⭐️⭐️⭐️⭐️
+            .company__bottom__inner__day
+              投稿日： 2020年2月22日
+          .company__bottom__text
+            = @a[0]["text"]
   = render "home/footer"

@@ -2,8 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @company = Company.all
-    @comment = Comment.group(:company_id)
-   
+    @comment = Comment.new
   end
 
   def search
@@ -15,6 +14,7 @@ class ListsController < ApplicationController
     @company = Company.find(params[:id])
     @comment = Comment.new
     @comments = @company.comments.order("created_at DESC")
+    
   end
 
   def kuchikomi
