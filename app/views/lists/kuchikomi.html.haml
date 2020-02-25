@@ -1,0 +1,96 @@
+= render "home/header"
+.list
+  .list__bar
+  .list__title
+    = "#{@companies.name}の会社情報"
+  .list__blank
+  .menu
+    .menu__top
+      = link_to "会社情報", "/lists/#{@companies.id}/company", class: "menu__top__select-gray4"
+      = link_to "口コミを投稿する", "/lists/#{@companies.id}/kuchikomi", class: "menu__top__select"
+      = link_to "インタビュー", "#", class: "menu__top__select-gray3"
+      = link_to "フォトギャラリー", "#", class: "menu__top__select-gray4"
+    .menu__box
+      .menu__box__text
+        = "#{@companies.text}"
+      .menu__box__image
+        = image_tag "#{@companies.image}", width: "300px", height: "200px"
+  = form_for([@company, @comment], url: "/lists/#{@companies.id}/messages", method: :post) do |form|
+    .main-k__box__contaner
+      .main2__box__contaner__top
+        = "#{@companies.name}の口コミを投稿"
+      .main3-title
+        .main3-title__left
+          年代・性別
+        .main3-title__right
+          = form.select :gender, ["20代 男性","20代 女性","30代 男性","30代 女性","40代 男性","40代 女性","50代 男性","50代 女性","60代 男性","60代 女性","70代 男性","70代 女性"]
+      .main3-title
+        .main3-title__left
+          電話・メール対応
+        .main3-title__right
+          = form.radio_button :tel_mail, :a
+          = form.label :tel_mail, "1点", value: :a
+          = form.radio_button :tel_mail, :b
+          = form.label :tel_mail, "2点", value: :b
+          = form.radio_button :tel_mail, :c
+          = form.label :tel_mail, "3点", value: :c
+          = form.radio_button :tel_mail, :d
+          = form.label :tel_mail, "4点", value: :d
+          = form.radio_button :tel_mail, :e, checked: true
+          = form.label :tel_mail, "5点", value: :e
+      .main3-title
+        .main3-title__left
+          見積もり対応
+        .main3-title__right
+          = form.radio_button :estimate, :a
+          = form.label :estimate, "1点", value: :a
+          = form.radio_button :estimate, :b
+          = form.label :estimate, "2点", value: :b
+          = form.radio_button :estimate, :c
+          = form.label :estimate, "3点", value: :c
+          = form.radio_button :estimate, :d
+          = form.label :estimate, "4点", value: :d
+          = form.radio_button :estimate, :e, checked: true
+          = form.label :estimate, "5点", value: :e
+      .main3-title
+        .main3-title__left
+          作業員の対応
+        .main3-title__right
+          = form.radio_button :operator, :a
+          = form.label :operator, "1点", value: :a
+          = form.radio_button :operator, :b
+          = form.label :operator, "2点", value: :b
+          = form.radio_button :operator, :c
+          = form.label :operator, "3点", value: :c
+          = form.radio_button :operator, :d
+          = form.label :operator, "4点", value: :d
+          = form.radio_button :operator, :e, checked: true
+          = form.label :operator, "5点", value: :e
+      .main3-title
+        .main3-title__left
+          サービス満足度
+        .main3-title__right
+          = form.radio_button :service, :a
+          = form.label :service, "1点", value: :a
+          = form.radio_button :service, :b
+          = form.label :service, "2点", value: :b
+          = form.radio_button :service, :c
+          = form.label :service, "3点", value: :c
+          = form.radio_button :service, :d
+          = form.label :service, "4点", value: :d
+          = form.radio_button :service, :e, checked: true
+          = form.label :service, "5点", value: :e
+      .main3-title
+        .main3-title__left
+          タイトル
+        .main3-title__right
+          = form.text_field :title, class: "main3-title__right__input", placeholder: '例) 最高でした！'
+      .main3-title-k
+        .main3-title-k__left
+          コメント
+        .main3-title-k__right
+          = form.text_area :text, class: "main3-title-k__right__form", placeholder: '例) 最高でした！'
+    .main2__box__bottom
+      .main2__box__bottom__contaner
+        = form.submit "投稿する", class: "main2__box__bottom__contaner__btn-n"
+= render "home/footer"

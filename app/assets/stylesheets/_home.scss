@@ -132,6 +132,7 @@
   height: 180vh;
   background-color: white;
   font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+  color: rgba(0, 0, 0, 0.76);
   &__box__bar {
     width: 100%;
     height: 50px;
@@ -145,6 +146,7 @@
     margin: auto;
     position: relative;
     border-top: solid 2px #dc143cef;
+    
     &__inner {
       width: 100%;
       height: 100%;
@@ -453,7 +455,7 @@
   &__box__contaner {
     width: 60%;
     height: 250px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: auto;
     color: rgba(0, 0, 0, 0.76);
     font-weight: bold;
@@ -461,7 +463,7 @@
       width: 100%;
       height: 50px;
       background-color: #dc143cef;
-      border-radius: 10px 10px 0 0;
+      border-radius: 5px 5px 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1253,6 +1255,132 @@ td {
 
 
 
-// --------------------電卓-------------------------
+// --------------------口コミ-------------------------
+
+.main3-title-k {
+  width: 100%;
+  height: 180px;
+  background-color: #ffe4e160;
+  border-bottom: dashed 1px #dc143cef;
+  display: flex;
+  align-items: center;
+  &__left {
+    width: 15%;
+    height: 180px;
+    background-color: #dcdcdc9f;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.76);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__right {
+    width: 80%;
+    height: 180px;
+    margin: auto;
+    font-size: 14px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    &__form {
+      width: 100%;
+      height: 130px;
+      border-radius: 5px;
+      border: solid 1px rgba(0, 0, 0, 0.328);
+      padding: 10px;
+      resize: none;
+    }
+  }
+}
+.main-k__box__contaner {
+  width: 60%;
+  height: 600px;
+  border-radius: 5px;
+  margin: auto;
+  color: rgba(0, 0, 0, 0.76);
+  font-weight: bold;
+}
+
+#comment_gender {
+  width: 100px;
+  height: 35px;
+
+}
+#comment_tel_mail_a {
+  margin-right: 5px;
+}
+#comment_tel_mail_b {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_tel_mail_c {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_tel_mail_d {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_tel_mail_e {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_estimate_a {
+  margin-right: 5px;
+}
+#comment_estimate_b {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_estimate_c {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_estimate_d {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_estimate_e {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_operator_a {
+  margin-right: 5px;
+}
+#comment_operator_b {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_operator_c {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_operator_d {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_operator_e {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_service_a {
+  margin-right: 5px;
+}
+#comment_service_b {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_service_c {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_service_d {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_service_e {
+  margin-right: 5px;
+  margin-left: 10px;
+}
 
 

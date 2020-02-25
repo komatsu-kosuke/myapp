@@ -10,5 +10,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lists, only: [:index]
+  resources :lists, only: [:index] do
+    resources :messages, only: [:create]
+    collection do
+      get 'search'
+    end
+    member do
+      get 'company'
+      get 'kuchikomi'
+    end
+  end
 end

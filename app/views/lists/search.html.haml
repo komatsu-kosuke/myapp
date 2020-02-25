@@ -2,13 +2,14 @@
 .list
   .list__bar
   .list__title
-    引越し業者一覧
+    引越し業者検索結果
   .list__blank
   = form_with(url: search_lists_path, local: true, method: :get) do |form|
     .list__base
       = form.text_field :keyword, placeholder: "引越し業者を検索する", class: "list__base__form"
       = form.submit "検索", class: "list__base__btn"
   .list__blank
+    = @aa
   .list__description
     .list__description__title
       myappは10社の引越し業社から見積もりが取れます！
@@ -20,7 +21,7 @@
     .company
       .company__top
         .company__top__image
-          = image_tag "#{company.image}", width: "90px"
+          = image_tag "kuruma.jpeg", width: "90px"
         .company__top__box
           = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
           .company__top__box__evaluation
@@ -42,7 +43,7 @@
               .company__bottom__box__text__container__kuchi
                 最新の口コミ
               .company__bottom__box__text__container__title
-                = @comment
+                最高でした！
         .company__bottom__inner
           .company__bottom__inner__evaluation
             評価点数⭐️⭐️⭐️⭐️⭐️
@@ -50,4 +51,7 @@
             投稿日： 2020年2月22日
         .company__bottom__text
           今回2回目利用させていただきました。 相場はもう少し安くできる業者もあるとは思いましたが、凄く気に入った新居なので大切に引っ越しをしていただけそうなアークさんを選ばせてもらいました。 また、7ヶ月の子供もいる引っ越しでしたので、小さい子への配慮をしてくれそうなところかも考えていました。見積もり面談のときや、スタッフの方が子供を意識してくれる対応が良かったです。 引っ越しの業務を担当されたスタッフさんの第一印象もよく、近隣住人の方や新居の管理人の方への挨拶や配慮がすごく良かったです。 引っ越し間際も、日にちのぎりぎりの調整や新居移転に伴う諸業務のアドバイスも対応していただけましたのでとても満足しております。 トータルで見ても最初から最後まで家族共々安心感ある引っ越しでした。また、引っ越しの際はお願いしようと検討しております。
-  = render "home/footer"
+
+      
+      
+    
