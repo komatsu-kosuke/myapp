@@ -1,5 +1,5 @@
 = render "home/header"
-.list
+.list-ku
   .list__bar
   .list__title
     = "#{@companies.name}の会社情報"
@@ -91,8 +91,8 @@
         .main3-title-k__left
           コメント
         .main3-title-k__right
-          = form.text_area :text, class: "main3-title-k__right__form", placeholder: '例) 最高でした！'
+          = form.text_area :text, class: "main3-title-k__right__form", placeholder: '例) とても親切に対応していただきました！またお願いしたいと思います！'
     .main2__box__bottom
       .main2__box__bottom__contaner
         = form.submit "投稿する", class: "main2__box__bottom__contaner__btn-n"
-= render "home/footer"
+  = render "home/footer"

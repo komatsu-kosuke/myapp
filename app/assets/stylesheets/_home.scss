@@ -209,6 +209,7 @@
             color: white;
             font-size: 20px;
             position: relative;
+            text-decoration: none;
           }
           &__btn:hover {
             background-color: #1e8fffa4;
@@ -223,32 +224,6 @@
             box-shadow:
                 0 0 0 5px #1e90ff,
             0 0 0 5px #1e8fffa4;
-          }
-          &__icon {
-            width: 40px;
-            height: 40px;
-            color: #1e90ff;
-            font-size: 23px;
-            background-color: white;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            left: 200px
-          }
-          &__allow {
-            width: 40px;
-            height: 40px;
-            color: #1e90ff;
-            font-size: 23px;
-            background-color: white;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            right: 200px
           }
         }
       }
@@ -1301,84 +1276,89 @@ td {
   font-weight: bold;
 }
 
+#comment_age {
+  width: 45px;
+  height: 35px;
+  margin-right: 5px;
+}
 #comment_gender {
   width: 100px;
   height: 35px;
-
+  margin-left: 5px;
 }
-#comment_tel_mail_a {
+#comment_tel_mail_1 {
   margin-right: 5px;
 }
-#comment_tel_mail_b {
-  margin-right: 5px;
-  margin-left: 10px;
-}
-#comment_tel_mail_c {
+#comment_tel_mail_2 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_tel_mail_d {
+#comment_tel_mail_3 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_tel_mail_e {
+#comment_tel_mail_4 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_estimate_a {
-  margin-right: 5px;
-}
-#comment_estimate_b {
+#comment_tel_mail_5 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_estimate_c {
+#comment_estimate_1 {
+  margin-right: 5px;
+}
+#comment_estimate_2 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_estimate_d {
+#comment_estimate_3 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_estimate_e {
+#comment_estimate_4 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_operator_a {
-  margin-right: 5px;
-}
-#comment_operator_b {
+#comment_estimate_5 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_operator_c {
+#comment_operator_1 {
+  margin-right: 5px;
+}
+#comment_operator_2 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_operator_d {
+#comment_operator_3 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_operator_e {
+#comment_operator_4 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_service_a {
-  margin-right: 5px;
-}
-#comment_service_b {
+#comment_operator_5 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_service_c {
+#comment_service_1 {
+  margin-right: 5px;
+}
+#comment_service_2 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_service_d {
+#comment_service_3 {
   margin-right: 5px;
   margin-left: 10px;
 }
-#comment_service_e {
+#comment_service_4 {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#comment_service_5 {
   margin-right: 5px;
   margin-left: 10px;
 }

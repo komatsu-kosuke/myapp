@@ -7,7 +7,7 @@ class ListsController < ApplicationController
 
   def search
     @company = Company.search(params[:keyword])
-    
+    @comment = Comment.new
   end
   
   def company
