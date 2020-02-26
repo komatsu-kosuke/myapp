@@ -44,10 +44,10 @@
         .company__bottom__box
           - unless Comment.where(company_id: company.id).last(1).empty?
             - @a = Comment.where(company_id: company.id).last(1)
-            - if @a[0]["gender"] == "20代 男性" || @a[0]["gender"] == "30代 男性" || @a[0]["gender"] == "40代 男性" || @a[0]["gender"] == "50代 男性" || @a[0]["gender"] == "60代 男性" || @a[0]["gender"] == "70代 男性"
+            - if @a[0][:gender] == "20代 男性" || @a[0][:gender] == "30代 男性" || @a[0][:gender] == "40代 男性" || @a[0][:gender] == "50代 男性" || @a[0][:gender] == "60代 男性" || @a[0][:gender] == "70代 男性"
               .company__bottom__box__image
                 = image_tag "business.png", width: "50px", height: "60px"
-            - elsif @a[0]["gender"] == "20代 女性" || @a[0]["gender"] == "30代 女性" || @a[0]["gender"] == "40代 女性" || @a[0]["gender"] == "50代 女性" || @a[0]["gender"] == "60代 女性" || @a[0]["gender"] == "70代 女性"
+            - elsif @a[0][:gender] == "20代 女性" || @a[0][:gender] == "30代 女性" || @a[0][:gender] == "40代 女性" || @a[0][:gender] == "50代 女性" || @a[0][:gender] == "60代 女性" || @a[0][:gender] == "70代 女性"
               .company__bottom__box__image
                 = image_tag "business_woman.png", width: "50px", height: "60px"
           .company__bottom__box__text
@@ -55,7 +55,7 @@
               .company__bottom__box__text__container__gender
                 - unless Comment.where(company_id: company.id).last(1).empty?
                   - @a = Comment.where(company_id: company.id).last(1)
-                  = @a[0]["gender"]
+                  = @a[0][:gender]
               .company__bottom__box__text__container__kuchi
                 最新の口コミ
               .company__bottom__box__text__container__title
