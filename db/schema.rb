@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2020_02_23_192307) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "company_id"
-    t.string "gender"
-    t.string "tel_mail"
-    t.string "estimate"
-    t.string "operator"
-    t.string "service"
+    t.integer "gender"
+    t.integer "tel_mail"
+    t.integer "estimate"
+    t.integer "operator"
+    t.integer "service"
     t.text "title"
     t.text "text"
     t.datetime "created_at", null: false

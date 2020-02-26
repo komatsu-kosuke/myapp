@@ -2,11 +2,11 @@ class CreateComments < ActiveRecord::Migration[5.2]
   def change
     create_table :comments do |t|
       t.integer :company_id
-      t.string :gender
-      t.string :tel_mail
-      t.string :estimate
-      t.string :operator
-      t.string :service
+      t.integer :gender
+      t.integer :tel_mail
+      t.integer :estimate
+      t.integer :operator
+      t.integer :service
       t.text :title
       t.text :text
       t.timestamps
