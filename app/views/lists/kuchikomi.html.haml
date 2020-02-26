@@ -23,7 +23,9 @@
         .main3-title__left
           年代・性別
         .main3-title__right
-          = form.select :gender, ["20代 男性","20代 女性","30代 男性","30代 女性","40代 男性","40代 女性","50代 男性","50代 女性","60代 男性","60代 女性","70代 男性","70代 女性"]
+          = form.select :age, [20,30,40,50,60,70]
+          代
+          = form.select :gender, ["男性","女性"]
       .main3-title
         .main3-title__left
           電話・メール対応

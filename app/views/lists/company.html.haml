@@ -23,15 +23,27 @@
     .list__blank
     .company2
       .company__top
-        - if comment.gender == "20代 男性" || comment.gender == "30代 男性" || comment.gender == "40代 男性" || comment.gender == "50代 男性" || comment.gender == "60代 男性" || comment.gender == "70代 男性"
+        - if comment.age == 20 && comment.gender == "男性" || comment.age == 30 && comment.gender == "男性"
           .company__top__image
             = image_tag "business.png", width: "50px", height: "60px"
-        - elsif comment.gender == "20代 女性" || comment.gender == "30代 女性" || comment.gender == "40代 女性" || comment.gender == "50代 女性" || comment.gender == "60代 女性" || comment.gender == "70代 女性"
+        - elsif comment.age == 40 && comment.gender == "男性" || comment.age == 50 && comment.gender == "男性" || comment.age == 60 && comment.gender == "男性"
+          .company__top__image
+            = image_tag "ojisan.png", width: "50px", height: "60px"
+        - elsif comment.age == 70 && comment.gender == "男性"
+          .company__top__image
+            = image_tag "ojiisan03.png", width: "50px", height: "60px"
+        - elsif comment.age == 20 && comment.gender == "女性" || comment.age == 30 && comment.gender == "女性"
           .company__top__image
             = image_tag "business_woman.png", width: "50px", height: "60px"
+        - elsif comment.age == 40 && comment.gender == "女性" || comment.age == 50 && comment.gender == "女性" || comment.age == 60 && comment.gender == "女性"
+          .company__top__image
+            = image_tag "obasan.png", width: "50px", height: "60px"
+        - elsif comment.age == 70 && comment.gender == "女性"
+          .company__top__image
+            = image_tag "obaachan.png", width: "50px", height: "60px"
         .company__top__box
           .company__top__box__gender
-            = comment.gender
+            = "#{comment.age}代 #{comment.gender}"
           .company__top__box__title
             = comment.title
           .company__top__box__evaluation

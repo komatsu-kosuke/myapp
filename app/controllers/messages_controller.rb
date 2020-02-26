@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:company_id, :gender, :tel_mail, :estimate, :operator, :service, :title, :text).merge(company_id: params[:list_id])
+    params.require(:comment).permit(:company_id, :age, :gender, :tel_mail, :estimate, :operator, :service, :title, :text).merge(company_id: params[:list_id])
   end
 
 end
