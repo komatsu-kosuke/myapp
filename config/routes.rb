@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
 
   resources :ranking, only: [:index]
+
+  resources :word_of_mouth, only: [:index]
 end
