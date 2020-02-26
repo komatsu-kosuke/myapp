@@ -16,40 +16,50 @@
       テレビCMでおなじみの大手引越し業者から、地域密着型の地元の人達から高い評判を得ている業者まで、全国の引っ越し業者と提携しています。
       この見積もりサービスは、これらの引越会社に対して見積りを依頼し、複数の見積り料金を比較することで、最安値の引越し業者を簡単に見つけることができます。
   - @company.each do |company|
-    - unless Comment.where(company_id: company.id).last(1).empty?
-      - @a = Comment.where(company_id: company.id).last(1)
-      .list__blank
-      .company
-        .company__top
-          .company__top__image
-            = image_tag "#{company.image}", width: "90px"
-          .company__top__box
-            = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
-            .company__top__box__evaluation
-              総合評価⭐️⭐️⭐️⭐️⭐️
-        .company__list
-          .company__list__a
-            電話・メール対応
-          .company__list__a
-            見積もり対応
-          .company__list__a
-            作業員
-          .company__list__a
-            サービス
-        .company__bottom
-          .company__bottom__box
+    - @a = Comment.where(company_id: company.id).last(1)
+    .list__blank
+    .company
+      .company__top
+        .company__top__image
+          = image_tag "#{company.image}", width: "90px"
+        .company__top__box
+          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+          .company__top__box__evaluation
+            - t = Comment.arel_table
+            - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+            - @result = @total.estimate.to_f + @total.tel_mail.to_f + @total.operator.to_f + @total.service.to_f
+            = "総合点数： #{@result / 4}点"
+      .company__list
+        .company__list__a
+          = "電話・メール対応： #{@a[0]["tel_mail"]}点"
+        .company__list__a
+          = "見積もり対応： #{@a[0]["estimate"]}点"
+        .company__list__a
+          = "作業員： #{@a[0]["operator"]}点"
+        .company__list__a
+          = "サービス： #{@a[0]["service"]}点"
+      .company__bottom
+        .company__bottom__box
+          - if @a[0]["gender"] == "20代 男性" || @a[0]["gender"] == "30代 男性" || @a[0]["gender"] == "40代 男性" || @a[0]["gender"] == "50代 男性" || @a[0]["gender"] == "60代 男性" || @a[0]["gender"] == "70代 男性"
             .company__bottom__box__image
-            .company__bottom__box__text
-              .company__bottom__box__text__container
-                .company__bottom__box__text__container__kuchi
-                  最新の口コミ
-                .company__bottom__box__text__container__title
-                  = @a[0]["title"]
-          .company__bottom__inner
-            .company__bottom__inner__evaluation
-              評価点数⭐️⭐️⭐️⭐️⭐️
-            .company__bottom__inner__day
-              投稿日： 2020年2月22日
-          .company__bottom__text
-            = @a[0]["text"]
+              = image_tag "business.png", width: "50px", height: "60px"
+          - elsif @a[0]["gender"] == "20代 女性" || @a[0]["gender"] == "30代 女性" || @a[0]["gender"] == "40代 女性" || @a[0]["gender"] == "50代 女性" || @a[0]["gender"] == "60代 女性" || @a[0]["gender"] == "70代 女性"
+            .company__bottom__box__image
+              = image_tag "business_woman.png", width: "50px", height: "60px"
+          .company__bottom__box__text
+            .company__bottom__box__text__container
+              .company__bottom__box__text__container__gender
+                = @a[0]["gender"]
+              .company__bottom__box__text__container__kuchi
+                最新の口コミ
+              .company__bottom__box__text__container__title
+                = @a[0]["title"]
+        .company__bottom__inner
+          .company__bottom__inner__evaluation
+            - result = @a[0]["tel_mail"].to_f + @a[0]["estimate"].to_f + @a[0]["operator"].to_f + @a[0]["service"].to_f
+            = "評価点数： #{result / 4}点"
+          .company__bottom__inner__day
+            = "投稿日： #{@a[0].created_at.strftime("%Y/%m/%d")}"
+        .company__bottom__text
+          = @a[0]["text"]
   = render "home/footer"
