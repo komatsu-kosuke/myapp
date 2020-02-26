@@ -47,7 +47,7 @@
         .main3-title__left
           郵便番号
         .main3-title__right
-          = f.text_field :n_zipcode, class: "main3-title__right__input", placeholder: '例) 123-1234'
+          = f.text_field :n_zipcode, class: "main3-title__right__input", placeholder: '任意です　例) 123-1234'
       .main3-title
         .main3-title__left
           都道府県
@@ -102,7 +102,7 @@
         .main3-title__left
           郵便番号
         .main3-title__right
-          = f.text_field :x_zipcode, class: "main3-title__right__input", placeholder: '例) 123-1234'
+          = f.text_field :x_zipcode, class: "main3-title__right__input", placeholder: '任意です　例) 123-1234'
       .main3-title
         .main3-title__left
           都道府県
@@ -129,7 +129,7 @@
           = f.select :x_b_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor"}
           階建て
           = f.select :x_floor, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['11以上',11]], {prompt: "選択"}, {class: "main3-title__right__floor2"}
-          階から引越し
+          階へ引越し
       .main3-title
         .main3-title__left
           エレベーター
