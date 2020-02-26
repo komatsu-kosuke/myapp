@@ -2,7 +2,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
   def change
     create_table :comments do |t|
       t.integer :company_id
-      t.integer :gender
+      t.string :gender
       t.integer :tel_mail
       t.integer :estimate
       t.integer :operator
