@@ -25,10 +25,10 @@
         .company__top__box
           = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
           .company__top__box__evaluation
-            - t = Comment.arel_table
-            - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
-            - @result = @total.estimate.to_f + @total.tel_mail.to_f + @total.operator.to_f + @total.service.to_f
-            = "総合点数： #{@result / 4}点"
+            -# - t = Comment.arel_table
+            -# - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+            -# - @result = @total.estimate.to_f + @total.tel_mail.to_f + @total.operator.to_f + @total.service.to_f
+            -# = "総合点数： #{@result / 4}点"
       .company__list
         .company__list__a
           = "電話・メール対応： #{@a[0]["tel_mail"]}点"
