@@ -26,7 +26,7 @@
           .company__top__box__evaluation
             - unless Comment.where(company_id: company.id).last(1).empty?
               - t = Comment.arel_table
-              - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as(:estimate),t[:tel_mail].average.as(:tel_mail),t[:operator].average.as(:operator),t[:service].average.as(:service)]).all[0]
+              - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
               - @result = @total.estimate.to_f + @total.tel_mail.to_f + @total.operator.to_f + @total.service.to_f
               = "総合点数： #{@result / 4}点"
       .company__list
