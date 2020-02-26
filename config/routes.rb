@@ -20,4 +20,6 @@ Rails.application.routes.draw do
       get 'kuchikomi'
     end
   end
+
+  resources :ranking, only: [:index]
 end

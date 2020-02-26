@@ -7,6 +7,14 @@ class ListsController < ApplicationController
 
   def search
     @company = Company.search(params[:keyword])
+    @result = "「#{params[:keyword]}」の検索結果"
+    if @company.present?
+      @company = Company.search(params[:keyword])
+      @result = "「#{params[:keyword]}」の検索結果"
+    else 
+      @company = Company.all
+      @result = "検索ワードに一致するものが見つかりませんでした。全件表示します。"
+    end
     @comment = Comment.new
   end
   
@@ -22,7 +30,5 @@ class ListsController < ApplicationController
     @comment = Comment.new
     @company = Company.new
   end
-
-  
 
 end

@@ -15,10 +15,8 @@
         = "#{@company.text}"
       .menu__box__image
         = image_tag "#{@company.image}", width: "300px", height: "200px"
-  .list__bar
   .list__title
     = "#{@company.name}の口コミ"
-  .list__blank
   - @comments.each do |comment|
     .list__blank
     .company2

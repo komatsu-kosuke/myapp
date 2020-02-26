@@ -1,5 +1,5 @@
 = render "home/header"
-.list2
+.list3
   .list__bar
   .list__title
     引越し業者一覧
@@ -15,6 +15,8 @@
     .list__description__text
       テレビCMでおなじみの大手引越し業者から、地域密着型の地元の人達から高い評判を得ている業者まで、全国の引っ越し業者と提携しています。
       この見積もりサービスは、これらの引越会社に対して見積りを依頼し、複数の見積り料金を比較することで、最安値の引越し業者を簡単に見つけることができます。
+  .search-result
+    = @result
   - @company.each do |company|
     .list__blank
     .company
