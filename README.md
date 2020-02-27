@@ -19,21 +19,21 @@
 
 ## シミュレーター
 
-* トップページから3ページ目(バリデーションのエラー表示)まで
+### トップページから3ページ目(バリデーションのエラー表示)まで
 [![Image from Gyazo](https://i.gyazo.com/e46a0918c374953b17bb145f9124491d.gif)](https://gyazo.com/e46a0918c374953b17bb145f9124491d)
 
-* 4ページ目から計算結果まで
+### 4ページ目から計算結果まで
 [![Image from Gyazo](https://i.gyazo.com/2525b00c63c212667acdd6131197c163.gif)](https://gyazo.com/2525b00c63c212667acdd6131197c163)
 
 ## 引越し業者一覧
 
-* 引越し業者一覧から会社情報、口コミ閲覧まで
+### 引越し業者一覧から会社情報および口コミ閲覧まで
 [![Image from Gyazo](https://i.gyazo.com/5e462ce2bbcbc04e18cb4662cf95f4f9.gif)](https://gyazo.com/5e462ce2bbcbc04e18cb4662cf95f4f9)
 
-* 会社情報、口コミ閲覧から口コミ投稿まで
+### 会社情報および口コミ閲覧から口コミ投稿まで
 [![Image from Gyazo](https://i.gyazo.com/308d0a7ea6ebd49ef488340ec2a34bdb.gif)](https://gyazo.com/308d0a7ea6ebd49ef488340ec2a34bdb)
 
-* あいまい検索
+### あいまい検索
 [![Image from Gyazo](https://i.gyazo.com/c442ff8b9fcfa1a61723ef6bd29b1fd1.gif)](https://gyazo.com/c442ff8b9fcfa1a61723ef6bd29b1fd1)
  
 # 開発環境
