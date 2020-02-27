@@ -9,7 +9,7 @@
  
 # DEMO
  
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+[![Image from Gyazo](https://i.gyazo.com/595a297619a4830eae0ff5e6c67b2b01.gif)](https://gyazo.com/595a297619a4830eae0ff5e6c67b2b01)
  
 # 開発環境
  
