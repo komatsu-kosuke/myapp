@@ -17,7 +17,7 @@
  
 # DEMO
 
-### シミュレーター
+### シミュレーター(計5ページ、gifは2枚)
 
 * トップページから3ページ目(バリデーションのエラー表示)まで
 [![Image from Gyazo](https://i.gyazo.com/e46a0918c374953b17bb145f9124491d.gif)](https://gyazo.com/e46a0918c374953b17bb145f9124491d)
@@ -25,7 +25,7 @@
 * 4ページ目から計算結果まで
 [![Image from Gyazo](https://i.gyazo.com/2525b00c63c212667acdd6131197c163.gif)](https://gyazo.com/2525b00c63c212667acdd6131197c163)
 
-### 引越し業者一覧
+### 引越し業者一覧(gif3枚)
 
 * 引越し業者一覧から会社情報および口コミ閲覧まで
 [![Image from Gyazo](https://i.gyazo.com/5e462ce2bbcbc04e18cb4662cf95f4f9.gif)](https://gyazo.com/5e462ce2bbcbc04e18cb4662cf95f4f9)
