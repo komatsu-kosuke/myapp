@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   def new
     @companies = Company.find(params[:id])
     @comment = Comment.new
+    @company = Company.new
   end
 
   def create

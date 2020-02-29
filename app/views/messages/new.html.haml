@@ -17,16 +17,18 @@
         = image_tag "#{@comment.company.image}", width: "300px", height: "200px"
   = form_for(@comment, url: "/lists/#{@comment.company.id}/messages", method: :post) do |form|
     - if @comment.errors.any?
-      .error
-        - if @comment.title.blank? && @comment.text.blank?
+      - if @comment.title.blank? && @comment.text.blank?
+        .error
           %i.fas.fa-exclamation-triangle
           タイトルは1文字以上15文字以内で入力してください。
           %i.fas.fa-exclamation-triangle
           コメントは1文字以上350文字以内で入力してください。
-        - elsif @comment.title.blank?
+      - elsif @comment.title.blank?
+        .error
           %i.fas.fa-exclamation-triangle
           タイトルは1文字以上15文字以内で入力してください。
-        - elsif @comment.text.blank?
+      - elsif @comment.text.blank?
+        .error
           %i.fas.fa-exclamation-triangle
           コメントは1文字以上350文字以内で入力してください。
     .main-k__box__contaner
