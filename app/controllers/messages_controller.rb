@@ -1,8 +1,13 @@
 class MessagesController < ApplicationController
 
   def create
-    comment = Comment.create(comment_params)
-    redirect_to "/lists/#{comment.company.id}/company"
+    @companies = Company.find_by(params[:id])
+    @comment = Comment.create(comment_params)
+    unless @comment.valid?
+      render template: "lists/kuchikomi"
+    else
+      redirect_to "/lists/#{@comment.company.id}/company"
+    end
   end
 
 

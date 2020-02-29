@@ -25,10 +25,14 @@
           = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
           .company__top__box__evaluation
             - unless Comment.where(company_id: company.id).last(1).empty?
-              - t = Comment.arel_table
-              - @total = Comment.where(company_id: company.id).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
-              - @result = @total.estimate.to_f + @total.tel_mail.to_f + @total.operator.to_f + @total.service.to_f
-              = "総合点数： #{@result / 4}点"
+              - total_t = Comment.where(company_id: company.id).average(:tel_mail)
+              - total_e = Comment.where(company_id: company.id).average(:estimate)
+              - total_o = Comment.where(company_id: company.id).average(:operator)
+              - total_s = Comment.where(company_id: company.id).average(:service)
+              - result = BigDecimal(total_t).floor(2) + BigDecimal(total_e).floor(2) + BigDecimal(total_o).floor(2) + BigDecimal(total_s).floor(2)
+              = "総合点数： #{BigDecimal(result / 4).floor(2).to_f}点"
+              -# - t = Comment.arel_table
+              -# - @total = Comment.where(company_id: company.id).group(:estimate, :tel_mail, :operator, :service).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
       .company__list
         - unless Comment.where(company_id: company.id).last(1).empty?
           - @a = Comment.where(company_id: company.id).last(1)
