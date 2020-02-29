@@ -1,0 +1,111 @@
+= render "home/header"
+.list-ku
+  .list__bar
+  .list__title
+    = "#{@comment.company.name}の会社情報"
+  .list__blank
+  .menu
+    .menu__top
+      = link_to "会社情報", "/lists/#{@comment.company.id}/company", class: "menu__top__select-gray4"
+      = link_to "口コミを投稿する", "/lists/#{@comment.company.id}/kuchikomi", class: "menu__top__select"
+      = link_to "インタビュー", "#", class: "menu__top__select-gray3"
+      = link_to "フォトギャラリー", "#", class: "menu__top__select-gray4"
+    .menu__box
+      .menu__box__text
+        = "#{@comment.company.text}"
+      .menu__box__image
+        = image_tag "#{@comment.company.image}", width: "300px", height: "200px"
+  = form_for(@comment, url: "/lists/#{@comment.company.id}/messages", method: :post) do |form|
+    - if @comment.errors.any?
+      .error
+        - if @comment.title.blank? && @comment.text.blank?
+          %i.fas.fa-exclamation-triangle
+          タイトルは1文字以上15文字以内で入力してください。
+          %i.fas.fa-exclamation-triangle
+          コメントは1文字以上350文字以内で入力してください。
+        - elsif @comment.title.blank?
+          %i.fas.fa-exclamation-triangle
+          タイトルは1文字以上15文字以内で入力してください。
+        - elsif @comment.text.blank?
+          %i.fas.fa-exclamation-triangle
+          コメントは1文字以上350文字以内で入力してください。
+    .main-k__box__contaner
+      .main2__box__contaner__top
+        = "#{@comment.company.name}の口コミを投稿"
+      .main3-title
+        .main3-title__left
+          年代・性別
+        .main3-title__right
+          = form.select :age, [20,30,40,50,60,70]
+          代
+          = form.select :gender, ["男性","女性"]
+      .main3-title
+        .main3-title__left
+          電話・メール対応
+        .main3-title__right
+          = form.radio_button :tel_mail, 1
+          = form.label :tel_mail, "1点", value: 1
+          = form.radio_button :tel_mail, 2
+          = form.label :tel_mail, "2点", value: 2
+          = form.radio_button :tel_mail, 3
+          = form.label :tel_mail, "3点", value: 3
+          = form.radio_button :tel_mail, 4
+          = form.label :tel_mail, "4点", value: 4
+          = form.radio_button :tel_mail, 5, checked: true
+          = form.label :tel_mail, "5点", value: 5
+      .main3-title
+        .main3-title__left
+          見積もり対応
+        .main3-title__right
+          = form.radio_button :estimate, 1
+          = form.label :estimate, "1点", value: 1
+          = form.radio_button :estimate, 2
+          = form.label :estimate, "2点", value: 2
+          = form.radio_button :estimate, 3
+          = form.label :estimate, "3点", value: 3
+          = form.radio_button :estimate, 4
+          = form.label :estimate, "4点", value: 4
+          = form.radio_button :estimate, 5, checked: true
+          = form.label :estimate, "5点", value: 5
+      .main3-title
+        .main3-title__left
+          作業員の対応
+        .main3-title__right
+          = form.radio_button :operator, 1
+          = form.label :operator, "1点", value: 1
+          = form.radio_button :operator, 2
+          = form.label :operator, "2点", value: 2
+          = form.radio_button :operator, 3
+          = form.label :operator, "3点", value: 3
+          = form.radio_button :operator, 4
+          = form.label :operator, "4点", value: 4
+          = form.radio_button :operator, 5, checked: true
+          = form.label :operator, "5点", value: 5
+      .main3-title
+        .main3-title__left
+          サービス満足度
+        .main3-title__right
+          = form.radio_button :service, 1
+          = form.label :service, "1点", value: 1
+          = form.radio_button :service, 2
+          = form.label :service, "2点", value: 2
+          = form.radio_button :service, 3
+          = form.label :service, "3点", value: 3
+          = form.radio_button :service, 4
+          = form.label :service, "4点", value: 4
+          = form.radio_button :service, 5, checked: true
+          = form.label :service, "5点", value: 5
+      .main3-title
+        .main3-title__left
+          タイトル
+        .main3-title__right
+          = form.text_field :title, class: "main3-title__right__input", placeholder: '15文字以内　例) 最高でした！'
+      .main3-title-k
+        .main3-title-k__left
+          コメント
+        .main3-title-k__right
+          = form.text_area :text, class: "main3-title-k__right__form", placeholder: '350文字以内　例) とても親切に対応していただきました！またお願いしたいと思います！'
+    .main2__box__bottom
+      .main2__box__bottom__contaner
+        = form.submit "投稿する", class: "main2__box__bottom__contaner__btn-n"
+  = render "home/footer"

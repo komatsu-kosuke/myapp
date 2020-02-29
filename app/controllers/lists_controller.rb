@@ -29,6 +29,7 @@ class ListsController < ApplicationController
     @companies = Company.find(params[:id])
     @comment = Comment.new
     @company = Company.new
+    
   end
 
 end

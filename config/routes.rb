@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [:index] do
-    resources :messages, only: [:create]
+    resources :messages, only: [:new, :create]
     collection do
       get 'search'
     end
