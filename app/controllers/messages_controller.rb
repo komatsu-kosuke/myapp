@@ -9,10 +9,8 @@ class MessagesController < ApplicationController
   def create
     @comment = Comment.create!(comment_params)
     if @comment.valid?
-      binding.pry
       redirect_to "/lists/#{@comment.company.id}/company"
     else
-      binding.pry
       render "new"
     end
   end
