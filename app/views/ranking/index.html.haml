@@ -1,4 +1,376 @@
 = render "home/header"
-.main
-  実装予定ページ
-= render "home/footer"
+.list
+  .list__bar
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      引越し業者おすすめランキング！
+  .list-ranking
+  .ranking-base
+    .ranking-title
+      .main__info__top__logo
+        %i.far.fa-check-circle
+      引越し業者選びに失敗したくない！そんな人はランキングをチェック！
+    .ranking-text
+      MyApp利用者からの評価が高い引越し業者をランキング形式で紹介していくので、あなたにぴったりの引っ越し業者を探す参考にしてください。
+      %br
+      ・電話・メール対応が良い業者ランキング
+      %br
+      ・見積もり対応が良い業者ランキング
+      %br
+      ・作業員の対応が良い業者ランキング
+      %br
+      ・サービス満足度が高い業者ランキング
+      %br
+      の順にご覧いただけます！
+  .list__bar
+  .border
+  .list__bar
+  .list__title
+    電話・メール対応が良い業者ランキングTOP3
+  - @company_tel_mail.each.with_index(1) do |company, i|
+    .list__blank
+    .ranking
+      = image_tag "crown.png", width: "50px"
+      .ranking__info
+        = "第#{i}位"
+      = image_tag "crown.png", width: "50px"
+    .company
+      .company__top
+        .company__top__image
+          = image_tag "#{company.image}", width: "90px"
+        .company__top__box
+          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+          .company__top__box__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - total_t = Comment.where(company_id: company.id).average(:tel_mail)
+              - total_e = Comment.where(company_id: company.id).average(:estimate)
+              - total_o = Comment.where(company_id: company.id).average(:operator)
+              - total_s = Comment.where(company_id: company.id).average(:service)
+              - result = BigDecimal(total_t).floor(2) + BigDecimal(total_e).floor(2) + BigDecimal(total_o).floor(2) + BigDecimal(total_s).floor(2)
+              = "総合点数： #{BigDecimal(result / 4).floor(2).to_f}点"
+              -# - t = Comment.arel_table
+              -# - @total = Comment.where(company_id: company.id).group(:estimate, :tel_mail, :operator, :service).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+      .company__list
+        - unless Comment.where(company_id: company.id).last(1).empty?
+          - @a = Comment.where(company_id: company.id).last(1)
+          .company__list__a
+            = "電話・メール対応： #{@a[0]["tel_mail"]}点"
+          .company__list__a
+            = "見積もり対応： #{@a[0]["estimate"]}点"
+          .company__list__a
+            = "作業員： #{@a[0]["operator"]}点"
+          .company__list__a
+            = "サービス： #{@a[0]["service"]}点"
+      .company__bottom
+        .company__bottom__box
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            - if @a[0]["age"] == 20 && @a[0]["gender"] == "男性" || @a[0]["age"] == 30 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "business.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "男性" || @a[0]["age"] == 50 && @a[0]["gender"] == "男性" || @a[0]["age"] == 60 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojisan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojiisan03.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 20 && @a[0]["gender"] == "女性" || @a[0]["age"] == 30 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "business_woman.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "女性" || @a[0]["age"] == 50 && @a[0]["gender"] == "女性" || @a[0]["age"] == 60 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obasan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obaachan.png", width: "50px", height: "60px"
+          .company__bottom__box__text
+            .company__bottom__box__text__container
+              .company__bottom__box__text__container__gender
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = "#{@a[0]["age"]}代 #{@a[0]["gender"]}"
+              .company__bottom__box__text__container__kuchi
+                最新の口コミ
+              .company__bottom__box__text__container__title
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = @a[0]["title"]
+        .company__bottom__inner
+          .company__bottom__inner__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              - result = @a[0]["tel_mail"].to_f + @a[0]["estimate"].to_f + @a[0]["operator"].to_f + @a[0]["service"].to_f
+              = "評価点数： #{result / 4}点"
+          .company__bottom__inner__day
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              = "投稿日： #{@a[0].created_at.strftime("%Y/%m/%d")}"
+        .company__bottom__text
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            = @a[0]["text"]
+  .list__bar
+  .border
+  .list__bar
+  .list__title
+    見積もり対応が良い業者ランキングTOP3
+  - @company_estimate.each.with_index(1) do |company, i|
+    .list__blank
+    .ranking
+      = image_tag "crown.png", width: "50px"
+      .ranking__info
+        = "第#{i}位"
+      = image_tag "crown.png", width: "50px"
+    .company
+      .company__top
+        .company__top__image
+          = image_tag "#{company.image}", width: "90px"
+        .company__top__box
+          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+          .company__top__box__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - total_t = Comment.where(company_id: company.id).average(:tel_mail)
+              - total_e = Comment.where(company_id: company.id).average(:estimate)
+              - total_o = Comment.where(company_id: company.id).average(:operator)
+              - total_s = Comment.where(company_id: company.id).average(:service)
+              - result = BigDecimal(total_t).floor(2) + BigDecimal(total_e).floor(2) + BigDecimal(total_o).floor(2) + BigDecimal(total_s).floor(2)
+              = "総合点数： #{BigDecimal(result / 4).floor(2).to_f}点"
+              -# - t = Comment.arel_table
+              -# - @total = Comment.where(company_id: company.id).group(:estimate, :tel_mail, :operator, :service).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+      .company__list
+        - unless Comment.where(company_id: company.id).last(1).empty?
+          - @a = Comment.where(company_id: company.id).last(1)
+          .company__list__a
+            = "電話・メール対応： #{@a[0]["tel_mail"]}点"
+          .company__list__a
+            = "見積もり対応： #{@a[0]["estimate"]}点"
+          .company__list__a
+            = "作業員： #{@a[0]["operator"]}点"
+          .company__list__a
+            = "サービス： #{@a[0]["service"]}点"
+      .company__bottom
+        .company__bottom__box
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            - if @a[0]["age"] == 20 && @a[0]["gender"] == "男性" || @a[0]["age"] == 30 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "business.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "男性" || @a[0]["age"] == 50 && @a[0]["gender"] == "男性" || @a[0]["age"] == 60 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojisan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojiisan03.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 20 && @a[0]["gender"] == "女性" || @a[0]["age"] == 30 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "business_woman.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "女性" || @a[0]["age"] == 50 && @a[0]["gender"] == "女性" || @a[0]["age"] == 60 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obasan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obaachan.png", width: "50px", height: "60px"
+          .company__bottom__box__text
+            .company__bottom__box__text__container
+              .company__bottom__box__text__container__gender
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = "#{@a[0]["age"]}代 #{@a[0]["gender"]}"
+              .company__bottom__box__text__container__kuchi
+                最新の口コミ
+              .company__bottom__box__text__container__title
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = @a[0]["title"]
+        .company__bottom__inner
+          .company__bottom__inner__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              - result = @a[0]["tel_mail"].to_f + @a[0]["estimate"].to_f + @a[0]["operator"].to_f + @a[0]["service"].to_f
+              = "評価点数： #{result / 4}点"
+          .company__bottom__inner__day
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              = "投稿日： #{@a[0].created_at.strftime("%Y/%m/%d")}"
+        .company__bottom__text
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            = @a[0]["text"]
+  .list__bar
+  .border
+  .list__bar
+  .list__title
+    作業員の対応が良い業者ランキングTOP3
+  - @company_estimate.each.with_index(1) do |company, i|
+    .list__blank
+    .ranking
+      = image_tag "crown.png", width: "50px"
+      .ranking__info
+        = "第#{i}位"
+      = image_tag "crown.png", width: "50px"
+    .company
+      .company__top
+        .company__top__image
+          = image_tag "#{company.image}", width: "90px"
+        .company__top__box
+          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+          .company__top__box__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - total_t = Comment.where(company_id: company.id).average(:tel_mail)
+              - total_e = Comment.where(company_id: company.id).average(:estimate)
+              - total_o = Comment.where(company_id: company.id).average(:operator)
+              - total_s = Comment.where(company_id: company.id).average(:service)
+              - result = BigDecimal(total_t).floor(2) + BigDecimal(total_e).floor(2) + BigDecimal(total_o).floor(2) + BigDecimal(total_s).floor(2)
+              = "総合点数： #{BigDecimal(result / 4).floor(2).to_f}点"
+              -# - t = Comment.arel_table
+              -# - @total = Comment.where(company_id: company.id).group(:estimate, :tel_mail, :operator, :service).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+      .company__list
+        - unless Comment.where(company_id: company.id).last(1).empty?
+          - @a = Comment.where(company_id: company.id).last(1)
+          .company__list__a
+            = "電話・メール対応： #{@a[0]["tel_mail"]}点"
+          .company__list__a
+            = "見積もり対応： #{@a[0]["estimate"]}点"
+          .company__list__a
+            = "作業員： #{@a[0]["operator"]}点"
+          .company__list__a
+            = "サービス： #{@a[0]["service"]}点"
+      .company__bottom
+        .company__bottom__box
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            - if @a[0]["age"] == 20 && @a[0]["gender"] == "男性" || @a[0]["age"] == 30 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "business.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "男性" || @a[0]["age"] == 50 && @a[0]["gender"] == "男性" || @a[0]["age"] == 60 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojisan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojiisan03.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 20 && @a[0]["gender"] == "女性" || @a[0]["age"] == 30 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "business_woman.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "女性" || @a[0]["age"] == 50 && @a[0]["gender"] == "女性" || @a[0]["age"] == 60 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obasan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obaachan.png", width: "50px", height: "60px"
+          .company__bottom__box__text
+            .company__bottom__box__text__container
+              .company__bottom__box__text__container__gender
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = "#{@a[0]["age"]}代 #{@a[0]["gender"]}"
+              .company__bottom__box__text__container__kuchi
+                最新の口コミ
+              .company__bottom__box__text__container__title
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = @a[0]["title"]
+        .company__bottom__inner
+          .company__bottom__inner__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              - result = @a[0]["tel_mail"].to_f + @a[0]["estimate"].to_f + @a[0]["operator"].to_f + @a[0]["service"].to_f
+              = "評価点数： #{result / 4}点"
+          .company__bottom__inner__day
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              = "投稿日： #{@a[0].created_at.strftime("%Y/%m/%d")}"
+        .company__bottom__text
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            = @a[0]["text"]
+  .list__bar
+  .border
+  .list__bar
+  .list__title
+    サービス満足度が高い業者ランキングTOP3
+  - @company_estimate.each.with_index(1) do |company, i|
+    .list__blank
+    .ranking
+      = image_tag "crown.png", width: "50px"
+      .ranking__info
+        = "第#{i}位"
+      = image_tag "crown.png", width: "50px"
+    .company
+      .company__top
+        .company__top__image
+          = image_tag "#{company.image}", width: "90px"
+        .company__top__box
+          = link_to "#{company.name}", "/lists/#{company.id}/company", class: "company__top__box__title"
+          .company__top__box__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - total_t = Comment.where(company_id: company.id).average(:tel_mail)
+              - total_e = Comment.where(company_id: company.id).average(:estimate)
+              - total_o = Comment.where(company_id: company.id).average(:operator)
+              - total_s = Comment.where(company_id: company.id).average(:service)
+              - result = BigDecimal(total_t).floor(2) + BigDecimal(total_e).floor(2) + BigDecimal(total_o).floor(2) + BigDecimal(total_s).floor(2)
+              = "総合点数： #{BigDecimal(result / 4).floor(2).to_f}点"
+              -# - t = Comment.arel_table
+              -# - @total = Comment.where(company_id: company.id).group(:estimate, :tel_mail, :operator, :service).select([t[:estimate].average.as('estimate'),t[:tel_mail].average.as('tel_mail'),t[:operator].average.as('operator'),t[:service].average.as('service')]).all[0]
+      .company__list
+        - unless Comment.where(company_id: company.id).last(1).empty?
+          - @a = Comment.where(company_id: company.id).last(1)
+          .company__list__a
+            = "電話・メール対応： #{@a[0]["tel_mail"]}点"
+          .company__list__a
+            = "見積もり対応： #{@a[0]["estimate"]}点"
+          .company__list__a
+            = "作業員： #{@a[0]["operator"]}点"
+          .company__list__a
+            = "サービス： #{@a[0]["service"]}点"
+      .company__bottom
+        .company__bottom__box
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            - if @a[0]["age"] == 20 && @a[0]["gender"] == "男性" || @a[0]["age"] == 30 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "business.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "男性" || @a[0]["age"] == 50 && @a[0]["gender"] == "男性" || @a[0]["age"] == 60 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojisan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "男性"
+              .company__bottom__box__image
+                = image_tag "ojiisan03.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 20 && @a[0]["gender"] == "女性" || @a[0]["age"] == 30 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "business_woman.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 40 && @a[0]["gender"] == "女性" || @a[0]["age"] == 50 && @a[0]["gender"] == "女性" || @a[0]["age"] == 60 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obasan.png", width: "50px", height: "60px"
+            - elsif @a[0]["age"] == 70 && @a[0]["gender"] == "女性"
+              .company__bottom__box__image
+                = image_tag "obaachan.png", width: "50px", height: "60px"
+          .company__bottom__box__text
+            .company__bottom__box__text__container
+              .company__bottom__box__text__container__gender
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = "#{@a[0]["age"]}代 #{@a[0]["gender"]}"
+              .company__bottom__box__text__container__kuchi
+                最新の口コミ
+              .company__bottom__box__text__container__title
+                - unless Comment.where(company_id: company.id).last(1).empty?
+                  - @a = Comment.where(company_id: company.id).last(1)
+                  = @a[0]["title"]
+        .company__bottom__inner
+          .company__bottom__inner__evaluation
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              - result = @a[0]["tel_mail"].to_f + @a[0]["estimate"].to_f + @a[0]["operator"].to_f + @a[0]["service"].to_f
+              = "評価点数： #{result / 4}点"
+          .company__bottom__inner__day
+            - unless Comment.where(company_id: company.id).last(1).empty?
+              - @a = Comment.where(company_id: company.id).last(1)
+              = "投稿日： #{@a[0].created_at.strftime("%Y/%m/%d")}"
+        .company__bottom__text
+          - unless Comment.where(company_id: company.id).last(1).empty?
+            - @a = Comment.where(company_id: company.id).last(1)
+            = @a[0]["text"]
+  .list__bar
+  = render "home/footer"

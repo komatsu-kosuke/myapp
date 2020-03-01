@@ -1,20 +1,28 @@
 = render "home/header"
 .list
   .list__bar
-  .list__title
-    引越し業者一覧
+  .main2__box__info
+    .main2__box__info__image
+      = image_tag "samurai.png", width: "100px"
+    .main2__box__info__text
+      おすすめ引越し業者の一覧でござる！
   .list__blank
   = form_with(url: search_lists_path, local: true, method: :get) do |form|
     .list__base
       = form.text_field :keyword, placeholder: "引越し業者を検索する", class: "list__base__form"
       = form.submit "検索", class: "list__base__btn"
   .list__blank
-  .list__description
-    .list__description__title
+  .ranking-base-list
+    .ranking-title
+      .main__info__top__logo
+        %i.far.fa-check-circle
       myappは10社の引越し業社と提携しています！
-    .list__description__text
+    .description__text
       テレビCMでおなじみの大手引越し業者から、地域密着型の地元の人達から高い評判を得ている業者まで、全国の引っ越し業者と提携しています。
       この見積もりサービスは、これらの引越会社の口コミや評価を比較し、自分に合った引越し業者を見つけることが出来ます。
+  .list__bar
+  .list__title
+    引越し業者一覧
   - @company.each do |company|
     .list__blank
     .company

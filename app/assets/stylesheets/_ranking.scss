@@ -1,0 +1,79 @@
+.ranking-base {
+  width: 60%;
+  height: 250px;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+  border: solid 2px #dc143cef;
+  border-radius: 5px;
+  margin: auto;
+}
+.ranking-title {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  margin-top: 20px;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.76);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ranking-text {
+  width: 57%;
+  height: 170px;
+  font-size: 15px;
+  margin: auto;
+  padding-right: 100px;
+  color: rgba(0, 0, 0, 0.76);
+}
+.ranking {
+  width: 60%;
+  height: 50px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.76);
+  &__info {
+    width:10%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    
+  }
+}
+.border {
+  width: 100%;
+  height: 2px;
+  border-bottom: dashed 2px #dc143cef;
+}
+.list-ranking {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.ranking-base-list {
+  width: 55%;
+  height: 200px;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+  border: inset 2px ;
+  border-radius: 5px;
+  margin: auto;
+
+}
+.description__text {
+  width: 57%;
+  height: 170px;
+  font-size: 15px;
+  margin: auto;
+  color: rgba(0, 0, 0, 0.76);
+}
