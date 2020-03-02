@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :n_floor, presence: true
   validates :x_b_floor, presence: true
   validates :x_floor, presence: true
+  validates :n_prefecture, presence: true
+  validates :x_prefecture, presence: true
   
   def labor_cost_high
     

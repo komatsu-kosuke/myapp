@@ -32,20 +32,47 @@
       .main2__box__info__bar__bottom__sircle-gray
   = form_for(@user, url: simulator4_home_index_path, method: :get) do |f|
     - if @user.errors.any?
-      - if @user.n_b_floor.blank? && @user.n_floor.blank?
+      - if @user.n_b_floor.blank? && @user.n_floor.blank? && @user.n_prefecture.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @n_b_floor
           %i.fas.fa-exclamation-triangle
           = @n_floor
+          %i.fas.fa-exclamation-triangle
+          = @n_prefecture
+      - elsif @user.n_b_floor.blank? && @user.n_floor.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @n_b_floor
+          %i.fas.fa-exclamation-triangle
+          = @n_floor
+      - elsif @user.n_b_floor.blank? && @user.n_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @n_b_floor
+          %i.fas.fa-exclamation-triangle
+          = @n_prefecture
       - elsif @user.n_b_floor.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @n_b_floor
+
+      - elsif @user.n_floor.blank? && @user.n_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @n_floor
+          %i.fas.fa-exclamation-triangle
+          = @n_prefecture
       - elsif @user.n_floor.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @n_floor
+
+      - elsif @user.n_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @n_prefecture
+
     .main3__box__contaner
       .main2__box__contaner__top
         現在のご住所
@@ -102,20 +129,47 @@
           = f.radio_button :n_roadwidth, :d
           = f.label :n_roadwidth, '自動車が通行できない', value: :d
     - if @user.errors.any?
-      - if @user.x_b_floor.blank? && @user.x_floor.blank?
+      - if @user.x_b_floor.blank? && @user.x_floor.blank? && @user.x_prefecture.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @x_b_floor
           %i.fas.fa-exclamation-triangle
           = @x_floor
+          %i.fas.fa-exclamation-triangle
+          = @x_prefecture
+      - elsif @user.x_b_floor.blank? && @user.x_floor.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @x_b_floor
+          %i.fas.fa-exclamation-triangle
+          = @x_floor
+      - elsif @user.x_b_floor.blank? && @user.x_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @x_b_floor
+          %i.fas.fa-exclamation-triangle
+          = @x_prefecture
       - elsif @user.x_b_floor.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @x_b_floor
+
+      - elsif @user.x_floor.blank? && @user.x_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @x_floor
+          %i.fas.fa-exclamation-triangle
+          = @x_prefecture
       - elsif @user.x_floor.blank?
         .error
           %i.fas.fa-exclamation-triangle
           = @x_floor
+
+      - elsif @user.x_prefecture.blank?
+        .error
+          %i.fas.fa-exclamation-triangle
+          = @x_prefecture
+
     .main3__box__contaner
       .main2__box__contaner__top
         お引越し先のご住所

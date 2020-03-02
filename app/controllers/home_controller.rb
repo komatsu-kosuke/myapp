@@ -20,6 +20,8 @@ class HomeController < ApplicationController
       x_b_floor = @user.errors.full_messages_for(:x_b_floor)
       n_floor = @user.errors.full_messages_for(:n_floor)
       x_floor = @user.errors.full_messages_for(:x_floor)
+      n_prefecture = @user.errors.full_messages_for(:n_prefecture)
+      x_prefecture = @user.errors.full_messages_for(:x_prefecture )
       if n_b_floor == ["何階建てかを入力してください"]
         @n_b_floor = "何階建てかを入力してください。"
       end
@@ -31,6 +33,12 @@ class HomeController < ApplicationController
       end
       if x_floor == ["何階へお引越しかを入力してください"]
         @x_floor = "何階へお引越しかを入力してください。"
+      end
+      if n_prefecture == ["N prefectureを入力してください"]
+        @n_prefecture = "お引越し元の都道府県を入力してください。"
+      end
+      if x_prefecture == ["X prefectureを入力してください"]
+        @x_prefecture = "お引越し先の都道府県を入力してください。"
       end
       render :simulator3 and return
     end
