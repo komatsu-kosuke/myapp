@@ -1,8 +1,9 @@
 class WordOfMouthController < ApplicationController
 
   def index
-    random = Random.new
-    @random = random.rand(1..3)
+    random = Comment.all
+    
+    @random = random.order("RAND()").limit(10)
   end
   
 end

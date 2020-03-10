@@ -1,18 +1,22 @@
 = render "home/header"
 .main
   実装予定ページ
-  - if @random == 1
-    .page
-      サラリーマン
-      = image_tag "business.png", width: "100px"
-  - elsif @random == 2
-    .page
-      おばちゃん
-      = image_tag "obasan.png", width: "100px"
-  - elsif @random == 3
-    .page
-      サムライ
-      = image_tag "samurai.png", width: "100px"
+  - @random.each do |random|
+    - if random[:company_id] == 1
+      .page
+        = random.gender
+        = random.age
+        = random.title
+        = random.text
+        = image_tag "business.png", width: "100px"
+    - elsif random[:company_id] == 2
+      .page
+        おばちゃん
+        = image_tag "obasan.png", width: "100px"
+    - elsif random[:company_id] == 3
+      .page
+        サムライ
+        = image_tag "samurai.png", width: "100px"
   .main2__box__bottom
     .main2__box__bottom__contaner
       = link_to "ガチャ", word_of_mouth_index_path, class: "main2__box__bottom__contaner__btn-m"
